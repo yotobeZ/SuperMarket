@@ -15,6 +15,7 @@
 <script>
 </script>
 <body>
+
 <%--<form method="get" action="/GoodsBill/" id="choosearea">
     <select name="goodsDistrict" id="goodsDistrict">
         <option value="0" selected>请选择</option>
