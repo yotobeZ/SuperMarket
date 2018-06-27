@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supermarket.dao.ReturnproMapper">
+  <resultMap id="BaseResultMap" type="com.supermarket.pojo.Returnpro">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <id column="ReturnId" jdbcType="INTEGER" property="returnId" />
+    <id column="SaleId" jdbcType="INTEGER" property="saleId" />
+    <id column="ProId" jdbcType="DATE" property="proId" />
+    <id column="ProDate" jdbcType="DATE" property="proDate" />
+    <result column="ReturnNum" jdbcType="INTEGER" property="returnNum" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    ReturnId, SaleId, ProId, ProDate, ReturnNum
+  </sql>
+  <select id="selectByExample" parameterType="com.supermarket.pojo.ReturnproExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from returnpro
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.supermarket.pojo.ReturnproKey" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from returnpro
+    where ReturnId = #{returnId,jdbcType=INTEGER}
+      and SaleId = #{saleId,jdbcType=INTEGER}
+      and ProId = #{proId,jdbcType=DATE}
+      and ProDate = #{proDate,jdbcType=DATE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.supermarket.pojo.ReturnproKey">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    delete from returnpro
+    where ReturnId = #{returnId,jdbcType=INTEGER}
+      and SaleId = #{saleId,jdbcType=INTEGER}
+      and ProId = #{proId,jdbcType=DATE}
+      and ProDate = #{proDate,jdbcType=DATE}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.supermarket.pojo.ReturnproExample">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    delete from returnpro
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.supermarket.pojo.Returnpro">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <selectKey keyProperty="returnId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into returnpro (SaleId, ProId, ProDate, 
+      ReturnNum)
+    values (#{saleId,jdbcType=INTEGER}, #{proId,jdbcType=DATE}, #{proDate,jdbcType=DATE}, 
+      #{returnNum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.supermarket.pojo.Returnpro">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <selectKey keyProperty="returnId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into returnpro
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="saleId != null">
+        SaleId,
+      </if>
+      <if test="proId != null">
+        ProId,
+      </if>
+      <if test="proDate != null">
+        ProDate,
+      </if>
+      <if test="returnNum != null">
+        ReturnNum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="saleId != null">
+        #{saleId,jdbcType=INTEGER},
+      </if>
+      <if test="proId != null">
+        #{proId,jdbcType=DATE},
+      </if>
+      <if test="proDate != null">
+        #{proDate,jdbcType=DATE},
+      </if>
+      <if test="returnNum != null">
+        #{returnNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.supermarket.pojo.ReturnproExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select count(*) from returnpro
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update returnpro
+    <set>
+      <if test="record.returnId != null">
+        ReturnId = #{record.returnId,jdbcType=INTEGER},
+      </if>
+      <if test="record.saleId != null">
+        SaleId = #{record.saleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.proId != null">
+        ProId = #{record.proId,jdbcType=DATE},
+      </if>
+      <if test="record.proDate != null">
+        ProDate = #{record.proDate,jdbcType=DATE},
+      </if>
+      <if test="record.returnNum != null">
+        ReturnNum = #{record.returnNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update returnpro
+    set ReturnId = #{record.returnId,jdbcType=INTEGER},
+      SaleId = #{record.saleId,jdbcType=INTEGER},
+      ProId = #{record.proId,jdbcType=DATE},
+      ProDate = #{record.proDate,jdbcType=DATE},
+      ReturnNum = #{record.returnNum,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.supermarket.pojo.Returnpro">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update returnpro
+    <set>
+      <if test="returnNum != null">
+        ReturnNum = #{returnNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ReturnId = #{returnId,jdbcType=INTEGER}
+      and SaleId = #{saleId,jdbcType=INTEGER}
+      and ProId = #{proId,jdbcType=DATE}
+      and ProDate = #{proDate,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.supermarket.pojo.Returnpro">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:45:21 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update returnpro
+    set ReturnNum = #{returnNum,jdbcType=INTEGER}
+    where ReturnId = #{returnId,jdbcType=INTEGER}
+      and SaleId = #{saleId,jdbcType=INTEGER}
+      and ProId = #{proId,jdbcType=DATE}
+      and ProDate = #{proDate,jdbcType=DATE}
+  </update>
+</mapper>

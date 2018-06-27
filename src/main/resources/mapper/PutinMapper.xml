@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supermarket.dao.PutinMapper">
+  <resultMap id="BaseResultMap" type="com.supermarket.pojo.Putin">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <id column="ProId" jdbcType="INTEGER" property="proId" />
+    <id column="ImpBill" jdbcType="INTEGER" property="impBill" />
+    <result column="ProvideId" jdbcType="INTEGER" property="provideId" />
+    <result column="ProDate" jdbcType="DATE" property="proDate" />
+    <result column="Num" jdbcType="INTEGER" property="num" />
+    <result column="ImpPrice" jdbcType="DECIMAL" property="impPrice" />
+    <result column="ImpDate" jdbcType="DATE" property="impDate" />
+    <result column="ExpDate" jdbcType="DATE" property="expDate" />
+    <result column="Operator" jdbcType="CHAR" property="operator" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    ProId, ImpBill, ProvideId, ProDate, Num, ImpPrice, ImpDate, ExpDate, Operator
+  </sql>
+  <select id="selectByExample" parameterType="com.supermarket.pojo.PutinExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from putin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.supermarket.pojo.PutinKey" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from putin
+    where ProId = #{proId,jdbcType=INTEGER}
+      and ImpBill = #{impBill,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.supermarket.pojo.PutinKey">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    delete from putin
+    where ProId = #{proId,jdbcType=INTEGER}
+      and ImpBill = #{impBill,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.supermarket.pojo.PutinExample">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    delete from putin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.supermarket.pojo.Putin">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <selectKey keyProperty="impBill" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into putin (ProId, ProvideId, ProDate, 
+      Num, ImpPrice, ImpDate, 
+      ExpDate, Operator)
+    values (#{proId,jdbcType=INTEGER}, #{provideId,jdbcType=INTEGER}, #{proDate,jdbcType=DATE}, 
+      #{num,jdbcType=INTEGER}, #{impPrice,jdbcType=DECIMAL}, #{impDate,jdbcType=DATE}, 
+      #{expDate,jdbcType=DATE}, #{operator,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.supermarket.pojo.Putin">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <selectKey keyProperty="impBill" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into putin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proId != null">
+        ProId,
+      </if>
+      <if test="provideId != null">
+        ProvideId,
+      </if>
+      <if test="proDate != null">
+        ProDate,
+      </if>
+      <if test="num != null">
+        Num,
+      </if>
+      <if test="impPrice != null">
+        ImpPrice,
+      </if>
+      <if test="impDate != null">
+        ImpDate,
+      </if>
+      <if test="expDate != null">
+        ExpDate,
+      </if>
+      <if test="operator != null">
+        Operator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proId != null">
+        #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="provideId != null">
+        #{provideId,jdbcType=INTEGER},
+      </if>
+      <if test="proDate != null">
+        #{proDate,jdbcType=DATE},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="impPrice != null">
+        #{impPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="impDate != null">
+        #{impDate,jdbcType=DATE},
+      </if>
+      <if test="expDate != null">
+        #{expDate,jdbcType=DATE},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.supermarket.pojo.PutinExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select count(*) from putin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update putin
+    <set>
+      <if test="record.proId != null">
+        ProId = #{record.proId,jdbcType=INTEGER},
+      </if>
+      <if test="record.impBill != null">
+        ImpBill = #{record.impBill,jdbcType=INTEGER},
+      </if>
+      <if test="record.provideId != null">
+        ProvideId = #{record.provideId,jdbcType=INTEGER},
+      </if>
+      <if test="record.proDate != null">
+        ProDate = #{record.proDate,jdbcType=DATE},
+      </if>
+      <if test="record.num != null">
+        Num = #{record.num,jdbcType=INTEGER},
+      </if>
+      <if test="record.impPrice != null">
+        ImpPrice = #{record.impPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.impDate != null">
+        ImpDate = #{record.impDate,jdbcType=DATE},
+      </if>
+      <if test="record.expDate != null">
+        ExpDate = #{record.expDate,jdbcType=DATE},
+      </if>
+      <if test="record.operator != null">
+        Operator = #{record.operator,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update putin
+    set ProId = #{record.proId,jdbcType=INTEGER},
+      ImpBill = #{record.impBill,jdbcType=INTEGER},
+      ProvideId = #{record.provideId,jdbcType=INTEGER},
+      ProDate = #{record.proDate,jdbcType=DATE},
+      Num = #{record.num,jdbcType=INTEGER},
+      ImpPrice = #{record.impPrice,jdbcType=DECIMAL},
+      ImpDate = #{record.impDate,jdbcType=DATE},
+      ExpDate = #{record.expDate,jdbcType=DATE},
+      Operator = #{record.operator,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.supermarket.pojo.Putin">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update putin
+    <set>
+      <if test="provideId != null">
+        ProvideId = #{provideId,jdbcType=INTEGER},
+      </if>
+      <if test="proDate != null">
+        ProDate = #{proDate,jdbcType=DATE},
+      </if>
+      <if test="num != null">
+        Num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="impPrice != null">
+        ImpPrice = #{impPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="impDate != null">
+        ImpDate = #{impDate,jdbcType=DATE},
+      </if>
+      <if test="expDate != null">
+        ExpDate = #{expDate,jdbcType=DATE},
+      </if>
+      <if test="operator != null">
+        Operator = #{operator,jdbcType=CHAR},
+      </if>
+    </set>
+    where ProId = #{proId,jdbcType=INTEGER}
+      and ImpBill = #{impBill,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.supermarket.pojo.Putin">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:13:46 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update putin
+    set ProvideId = #{provideId,jdbcType=INTEGER},
+      ProDate = #{proDate,jdbcType=DATE},
+      Num = #{num,jdbcType=INTEGER},
+      ImpPrice = #{impPrice,jdbcType=DECIMAL},
+      ImpDate = #{impDate,jdbcType=DATE},
+      ExpDate = #{expDate,jdbcType=DATE},
+      Operator = #{operator,jdbcType=CHAR}
+    where ProId = #{proId,jdbcType=INTEGER}
+      and ImpBill = #{impBill,jdbcType=INTEGER}
+  </update>
+</mapper>

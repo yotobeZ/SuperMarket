@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supermarket.dao.ProviderMapper">
+  <resultMap id="BaseResultMap" type="com.supermarket.pojo.Provider">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <id column="ProvideId" jdbcType="INTEGER" property="provideId" />
+    <result column="ProvideName" jdbcType="CHAR" property="provideName" />
+    <result column="Contact" jdbcType="CHAR" property="contact" />
+    <result column="Phone" jdbcType="INTEGER" property="phone" />
+    <result column="ProvideAdd" jdbcType="CHAR" property="provideAdd" />
+    <result column="Account" jdbcType="INTEGER" property="account" />
+    <result column="Providerank" jdbcType="INTEGER" property="providerank" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    ProvideId, ProvideName, Contact, Phone, ProvideAdd, Account, Providerank
+  </sql>
+  <select id="selectByExample" parameterType="com.supermarket.pojo.ProviderExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from provider
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from provider
+    where ProvideId = #{provideId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    delete from provider
+    where ProvideId = #{provideId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.supermarket.pojo.ProviderExample">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    delete from provider
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.supermarket.pojo.Provider">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <selectKey keyProperty="provideId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into provider (ProvideName, Contact, Phone, 
+      ProvideAdd, Account, Providerank
+      )
+    values (#{provideName,jdbcType=CHAR}, #{contact,jdbcType=CHAR}, #{phone,jdbcType=INTEGER}, 
+      #{provideAdd,jdbcType=CHAR}, #{account,jdbcType=INTEGER}, #{providerank,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.supermarket.pojo.Provider">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <selectKey keyProperty="provideId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into provider
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="provideName != null">
+        ProvideName,
+      </if>
+      <if test="contact != null">
+        Contact,
+      </if>
+      <if test="phone != null">
+        Phone,
+      </if>
+      <if test="provideAdd != null">
+        ProvideAdd,
+      </if>
+      <if test="account != null">
+        Account,
+      </if>
+      <if test="providerank != null">
+        Providerank,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="provideName != null">
+        #{provideName,jdbcType=CHAR},
+      </if>
+      <if test="contact != null">
+        #{contact,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="provideAdd != null">
+        #{provideAdd,jdbcType=CHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=INTEGER},
+      </if>
+      <if test="providerank != null">
+        #{providerank,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.supermarket.pojo.ProviderExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select count(*) from provider
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update provider
+    <set>
+      <if test="record.provideId != null">
+        ProvideId = #{record.provideId,jdbcType=INTEGER},
+      </if>
+      <if test="record.provideName != null">
+        ProvideName = #{record.provideName,jdbcType=CHAR},
+      </if>
+      <if test="record.contact != null">
+        Contact = #{record.contact,jdbcType=CHAR},
+      </if>
+      <if test="record.phone != null">
+        Phone = #{record.phone,jdbcType=INTEGER},
+      </if>
+      <if test="record.provideAdd != null">
+        ProvideAdd = #{record.provideAdd,jdbcType=CHAR},
+      </if>
+      <if test="record.account != null">
+        Account = #{record.account,jdbcType=INTEGER},
+      </if>
+      <if test="record.providerank != null">
+        Providerank = #{record.providerank,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update provider
+    set ProvideId = #{record.provideId,jdbcType=INTEGER},
+      ProvideName = #{record.provideName,jdbcType=CHAR},
+      Contact = #{record.contact,jdbcType=CHAR},
+      Phone = #{record.phone,jdbcType=INTEGER},
+      ProvideAdd = #{record.provideAdd,jdbcType=CHAR},
+      Account = #{record.account,jdbcType=INTEGER},
+      Providerank = #{record.providerank,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.supermarket.pojo.Provider">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update provider
+    <set>
+      <if test="provideName != null">
+        ProvideName = #{provideName,jdbcType=CHAR},
+      </if>
+      <if test="contact != null">
+        Contact = #{contact,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        Phone = #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="provideAdd != null">
+        ProvideAdd = #{provideAdd,jdbcType=CHAR},
+      </if>
+      <if test="account != null">
+        Account = #{account,jdbcType=INTEGER},
+      </if>
+      <if test="providerank != null">
+        Providerank = #{providerank,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ProvideId = #{provideId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.supermarket.pojo.Provider">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:11:28 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update provider
+    set ProvideName = #{provideName,jdbcType=CHAR},
+      Contact = #{contact,jdbcType=CHAR},
+      Phone = #{phone,jdbcType=INTEGER},
+      ProvideAdd = #{provideAdd,jdbcType=CHAR},
+      Account = #{account,jdbcType=INTEGER},
+      Providerank = #{providerank,jdbcType=INTEGER}
+    where ProvideId = #{provideId,jdbcType=INTEGER}
+  </update>
+</mapper>
