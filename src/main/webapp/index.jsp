@@ -16,16 +16,17 @@
 </script>
 <body>
 
-<%--<form method="get" action="/GoodsBill/" id="choosearea">
-    <select name="goodsDistrict" id="goodsDistrict">
-        <option value="0" selected>请选择</option>
-        <option value="1" >朝阳</option>
-        <option value="2" >海淀</option>
-        <option value="3" >丰台</option>
-        <option value="4" >西城</option>
-        <option value="5" >昌平</option>
-    </select>
-    <button type="submit">查询</button>
-</form>--%>
+<div id="class" align="center">
+
+    <form action="login" method="post">
+
+        username:<input type="text" name="username" id="username"/><br> password:<input
+            type="text" name="password" id="password"/><br> <input type="submit"
+                                                            value="submit" />
+
+    </form>
+
+</div>
+
 </body>
 </html>

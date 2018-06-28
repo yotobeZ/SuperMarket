@@ -238,4 +238,19 @@
       LogLimit = #{logLimit,jdbcType=INTEGER}
     where LogId = #{logId,jdbcType=INTEGER}
   </update>
+  <select id="findWithLoginAndPassword" parameterType="com.supermarket.pojo.UserlogExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Wed Jun 27 15:16:34 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from userlog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    where username=#{username} and password=#{password}
+  </select>
 </mapper>

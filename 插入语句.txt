@@ -1,0 +1,45 @@
+Product——商品信息表
+INSERT INTO product VALUES ("1","草莓","1#","2.0","50g","水果","1","1","20")
+INSERT INTO product VALUES ("2","苹果","1#","4.5","200g","水果","10","1","10")
+INSERT INTO product VALUES ("3","牛奶","2#","6.0","200ml","饮料","60","2","30")
+INSERT INTO product VALUES ("4","橙汁","2#","3.5","500ml","饮料","30","2","10")
+INSERT INTO product VALUES ("5","话梅","3#","4.5","100g","零食","10","3","10")
+INSERT INTO product VALUES ("6","果脯","3#","4.5","100g","零食","10","3","10")
+
+
+Provider——供应商
+INSERT INTO provider VALUES ("1","水果商","王五","13474","昌吉","6226","1")
+INSERT INTO provider VALUES ("2","饮料商","张三","13765","南一环","6226","1")
+INSERT INTO provider VALUES ("3","果干商","李四","18781","小港","6226","1")
+
+
+Employee——员工表
+INSERT INTO employee VALUES ("1","店长","女","36","42000","18755","2006-03-22","0")
+INSERT INTO employee VALUES ("2","收银员","男","35","23000","18696","2010-02-20","1")
+INSERT INTO employee VALUES ("3","库管员","男","28","47000","13636","2016-11-20","2")
+INSERT INTO employee VALUES ("4","信息员","男","26","31000","18666","2017-12-10","3")
+INSERT INTO employee VALUES ("5","理货员","女","30","15000","18666","2014-12-10","4")
+
+
+Uselogr——登录用户
+INSERT INTO userlog VALUES ("1","店长","42000","0")
+INSERT INTO userlog VALUES ("2","收银员","23000","1")
+INSERT INTO userlog VALUES ("3","库管员","47000","2")
+INSERT INTO userlog VALUES ("4","信息员","31000","3")
+INSERT INTO userlog VALUES ("5","理货员","15000","4")
+
+
+PutIn——入库表
+INSERT INTO putin VALUES ("1","1","1","2018-02-02","200","1.0","2018-02-02","2018-02-20","库管员")
+INSERT INTO putin VALUES ("2","2","1","2018-02-02","300","3.0","2018-02-02","2018-02-28","库管员")
+INSERT INTO putin VALUES ("3","3","2","2018-03-02","200","4.0","2018-03-08","2018-09-20","库管员")
+INSERT INTO putin VALUES ("4","4","2","2018-03-02","200","2.5","2018-03-02","2018-09-20","库管员")
+INSERT INTO putin VALUES ("5","5","3","2018-05-11","300","3.0","2018-05-20","2019-02-20","库管员")
+INSERT INTO putin VALUES ("6","6","3","2018-05-11","300","3.0","2018-05-20","2019-02-20","库管员")
+SaleRecord——销售记录
+INSERT INTO salerecord VALUES ("1","1","2018-02-02","2018-02-20","10","0")
+INSERT INTO salerecord VALUES ("2","2","2018-02-02","2018-02-04","30","1")
+INSERT INTO salerecord VALUES ("3","3","2018-03-02","2018-09-20","20","0")
+INSERT INTO salerecord VALUES ("4","4","2018-03-02","2018-09-20","20","2")
+INSERT INTO salerecord VALUES ("5","5","2018-05-11","2019-02-20","15","1")
+INSERT INTO salerecord VALUES ("6","6","2018-05-11","2019-02-20","10","1")
