@@ -26,7 +26,7 @@ public class LoginController {
         }
         else{
             model.addAttribute("result","2");//登录成功
-            switch (userlog.getLogLimit()){
+            switch (userlog.getLogLimit()){//判断登陆
                 case 0:{
                     url= "list/orderlist";
                     break;
