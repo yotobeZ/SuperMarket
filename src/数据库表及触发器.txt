@@ -1,0 +1,171 @@
+USE supermarket;
+CREATE TABLE Provider
+(
+ProvideId INT(8) PRIMARY KEY,
+ProvideName CHAR(30),
+Contact CHAR(30),
+Phone INT(11),
+ProvideAdd CHAR(30),
+Account INT(20),
+Providerank INT(2)
+)
+
+
+CREATE TABLE Employee
+(
+EmId INT(8) PRIMARY KEY,
+EmName CHAR(5),
+Sex CHAR(2),
+Age INT(3),
+IdCard INT(18),
+Phone INT(11),
+HireDate DATE,
+Post CHAR(2)
+)
+
+
+CREATE TABLE UserLog
+(
+LogId INT(8) PRIMARY KEY,
+LogName CHAR(10),
+LogPassword CHAR(20),
+LogLimit INT(2),
+FOREIGN KEY(LogId) REFERENCES Employee(EmId)
+)
+
+
+
+CREATE TABLE Product
+(
+ProId INT(8) PRIMARY KEY,
+ProName CHAR(30),
+ProShelf CHAR(2),
+ProPrice NUMERIC(10,2),
+ProSize CHAR(10),
+ProCatagory CHAR(10),
+SalesDay INT(8),
+ProvideId INT(8),
+SafeStock INT(4),
+FOREIGN KEY(ProvideId) REFERENCES Provider(ProvideId)
+)
+
+CREATE TABLE PutIn
+(
+ImpBill INT(10),
+ProId INT(8),
+ProvideId INT(8),
+ProDate DATE,
+Num INT(4),
+ImpPrice NUMERIC(10,2),
+ImpDate DATE,
+ExpDate DATE,
+Operator CHAR(10),
+PRIMARY KEY(ProId,ImpBill),
+FOREIGN KEY(ProId) REFERENCES Product(ProId),
+FOREIGN KEY(ProvideId) REFERENCES Provider(ProvideId)
+)
+
+CREATE TABLE Stock
+(
+ProId INT(8),
+ProDate DATE,
+StoreNum INT(4),
+PRIMARY KEY(ProId,ProDate),
+FOREIGN KEY(ProId) REFERENCES PutIn(ProId)
+)
+
+
+CREATE TABLE ChangePrice
+(
+ProId INT(8),
+OldImpPrice NUMERIC(10,2),
+NewImpPrice NUMERIC(10,2),
+OldSalePrice NUMERIC(10,2),
+NewSalePrice NUMERIC(10,2),
+AlterTime DATE,
+PRIMARY KEY(ProId)
+
+)
+
+
+CREATE TABLE SaleRecord
+(
+SaleNo INT(8),
+ProId INT(8),
+ProDate DATE,
+SaleDate DATE,
+SaleNum INT(4),
+ModeOfPay INT (2),
+PRIMARY KEY(ProId,SaleNo,ProDate),
+FOREIGN KEY(ProId,ProDate)REFERENCES Stock(ProId,ProDate)
+)
+
+
+CREATE TABLE Sales
+(
+ProId INT(8),
+ProDate DATE,
+Promotion CHAR(12),
+SaleDate DATE,
+PRIMARY KEY(ProId,ProDate),
+FOREIGN KEY(ProId,ProDate) REFERENCES Stock(ProId,ProDate)
+)
+
+CREATE TABLE ReturnPro
+(
+ReturnId INT(8),
+SaleId INT(8),
+ProId INT(8),
+ProDate DATE,
+ReturnNum INT(4),
+PRIMARY KEY(ReturnId,SaleId,ProId,ProDate),
+FOREIGN KEY(ProId,ProDate) REFERENCES salerecord(ProId,ProDate)
+)
+
+CREATE TABLE RemindIn
+(
+ProId INT(8) PRIMARY KEY,
+InNum INT(11),
+RemDate DATE
+)
+
+
+DELIMITER $$
+CREATE
+    TRIGGER ` test`.`adds` AFTER INSERT
+    ON ` test`.`putin`
+    FOR EACH ROW BEGIN
+      SET  @spid=new.ProId;
+      SET  @scrq=new.ProDate;
+      SET  @rksl=new.Num;
+      INSERT stock SET StoreNum= @rksl,ProDate=@scrq,ProId=@spid ; 
+    END$$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE
+    TRIGGER `test`.`sale` AFTER INSERT
+    ON `test`.`salerecord`
+    FOR EACH ROW BEGIN
+      SET  @spid=new.ProId;
+      SET  @scrq=new.ProDate;
+      SET  @xssl=new.SaleNum;
+      UPDATE stock SET StoreNum=StoreNum-@xssl WHERE ProDate=@scrq AND ProId=@spid ; 
+    END$$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE
+    TRIGGER `test`.`return` AFTER INSERT
+    ON `test`.`returnpro`
+    FOR EACH ROW BEGIN
+      SET  @spid=new.ProId;
+      SET  @scrq=new.ProDate;
+      SET  @thsl=new.ReturnNum;
+      UPDATE stock SET StoreNum=StoreNum+@thsl WHERE ProDate=@scrq AND ProId=@spid ; 
+    END$$
+DELIMITER ;
+
+
