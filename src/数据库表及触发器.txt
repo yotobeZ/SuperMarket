@@ -132,13 +132,13 @@ RemDate DATE
 
 DELIMITER $$
 CREATE
-    TRIGGER ` test`.`adds` AFTER INSERT
-    ON ` test`.`putin`
+    TRIGGER adds` AFTER INSERT
+    ON putin`
     FOR EACH ROW BEGIN
       SET  @spid=new.ProId;
       SET  @scrq=new.ProDate;
       SET  @rksl=new.Num;
-      INSERT stock SET StoreNum= @rksl,ProDate=@scrq,ProId=@spid ; 
+      INSERT stock SET StoreNum= @rksl,ProDate=@scrq,ProId=@spid ;
     END$$
 DELIMITER ;
 

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -18,13 +19,11 @@
 
 <div id="class" align="center">
 
-    <form action="login" method="post">
-
-        username:<input type="text" name="username" id="username"/><br> password:<input
-            type="text" name="password" id="password"/><br> <input type="submit"
-                                                            value="submit" />
-
-    </form>
+    <sp:form action="login" method="post" modelAttribute="userlog" >
+        username:<sp:input path="username" type="text" name="username" id="username"/><br>
+        password:<sp:input path="password" type="text" name="password" id="password"/><br>
+        <input type="submit" value="submit" />
+    </sp:form>
 
 </div>
 
