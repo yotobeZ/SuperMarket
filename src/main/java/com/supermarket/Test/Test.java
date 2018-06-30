@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 /**
  * @ClassName com.supermarket.Test
  * @Description
@@ -19,11 +21,19 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class Test {
     @Autowired
     UserlogMapperService userlogMapperService;
+
     @org.junit.Test
     public void TestLogin(){
         Userlog userlog=new Userlog();
-        userlog.setLogName("店长");
-        userlog.setLogPassword("000");
+        userlog.setLogName("sy");
+        userlog.setLogPassword("00");
         System.out.println(userlogMapperService.login(userlog));
+        List<Userlog> userlogList =userlogMapperService.selectByExample(userlog);
+
+        for (Userlog test:userlogList
+             ) {
+            System.out.println(1);
+            System.out.println(test.toString());
+        }
     }
 }

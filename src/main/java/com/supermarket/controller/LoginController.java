@@ -21,7 +21,7 @@ public class LoginController {
     @RequestMapping(value="/prelogin",method = RequestMethod.GET)
     public String prelogin(@ModelAttribute("Userlog")Userlog userlog){
         log.info("进入预登陆");
-        return "/login";
+        return "redirect:/login";
     }
 
     @RequestMapping(value="/login",method = RequestMethod.POST)
@@ -34,26 +34,32 @@ public class LoginController {
             url="redirect:/index";
         }
         else{
-            model.addAttribute("result","2");//登录成功\
+            model.addAttribute("result","2");//登录成功
             userlog=userlogMapperService.selectByExample(userlog).get(0);
+            System.out.println(userlog.toString());
+            System.out.println(userlog.getLogLimit());
             switch (userlog.getLogLimit()){//判断登陆
                 case 0:{
                     url= "list/orderlist";
+                    log.info("限定"+userlog.getLogLimit().toString());
                     log.info("店长");
                     break;
                 }
                 case 1:{
                     url= "list/cashier";
+                    log.info("限定"+userlog.getLogLimit().toString());
                     log.info("收银员");
                     break;
                 }
                 case 2:{
                     url=  "list/putin";
+                    log.info("限定"+userlog.getLogLimit().toString());
                     log.info("库管");
                     break;
                 }
                 case 3:{
                     url=  "list/infolist";
+                    log.info("限定"+userlog.getLogLimit().toString());
                     log.info("信息员");
                     break;
                 }

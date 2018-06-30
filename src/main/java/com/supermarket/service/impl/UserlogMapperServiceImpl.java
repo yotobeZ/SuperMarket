@@ -11,12 +11,12 @@ import java.util.List;
 @Service("UserMapperService")
 public class UserlogMapperServiceImpl implements UserlogMapperService {
     @Autowired
-    private UserlogMapper userlogMapper;
-    private UserlogExample userlogExample;
+    UserlogMapper userlogMapper;
+
 
     @Override
     public boolean login(Userlog userlog) {
-        userlogExample = new UserlogExample();
+        UserlogExample userlogExample = new UserlogExample();
         UserlogExample.Criteria criteria = userlogExample.createCriteria();
         criteria.andLogNameEqualTo(userlog.getLogName());
         criteria.andLogPasswordEqualTo(userlog.getLogPassword());
@@ -31,7 +31,10 @@ public class UserlogMapperServiceImpl implements UserlogMapperService {
 
     @Override
     public List<Userlog> selectByExample(Userlog userlog) {
-        userlogExample = new UserlogExample();
+        UserlogExample userlogExample = new UserlogExample();
+        UserlogExample.Criteria criteria = userlogExample.createCriteria();
+        criteria.andLogNameEqualTo(userlog.getLogName());
+        criteria.andLogPasswordEqualTo(userlog.getLogPassword());
         return userlogMapper.selectByExample(userlogExample);
     }
 }
