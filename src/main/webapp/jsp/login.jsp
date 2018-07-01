@@ -5,7 +5,7 @@
 <head>
     <title>首页</title>
 </head>
-<script src="resources/js/jquery-1.12.4.js"/>
+<script src="../resources/js/jquery-1.12.4.js"/>
 <script>
 </script>
 <body>

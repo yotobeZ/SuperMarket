@@ -17,49 +17,49 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     @Autowired
     UserlogMapperService userlogMapperService;
-
     @RequestMapping(value="/prelogin",method = RequestMethod.GET)
     public String prelogin(@ModelAttribute("Userlog")Userlog userlog){
         log.info("进入预登陆");
-        return "redirect:/login";
+        return "/login";
     }
 
     @RequestMapping(value="/login",method = RequestMethod.POST)
     public String login(@ModelAttribute("Userlog")Userlog userlog, Model model, HttpSession session){
         log.info("进入登陆");
         String url="";
+        /**
+         * 登陆判断
+         */
         if(!userlogMapperService.login(userlog)){
-            model.addAttribute("result","0");//登陆失败
+            model.addAttribute("result","0");
             log.info("登陆失败");
-            url="redirect:/index";
+            url="redirect:/";
         }
         else{
-            model.addAttribute("result","2");//登录成功
+            model.addAttribute("result","2");
             userlog=userlogMapperService.selectByExample(userlog).get(0);
-            System.out.println(userlog.toString());
-            System.out.println(userlog.getLogLimit());
-            switch (userlog.getLogLimit()){//判断登陆
+            /**
+             * 登陆权限判断
+             */
+            log.info(userlog.getLogLimit().toString());
+            switch (userlog.getLogLimit()){
                 case 0:{
                     url= "list/orderlist";
-                    log.info("限定"+userlog.getLogLimit().toString());
                     log.info("店长");
                     break;
                 }
                 case 1:{
-                    url= "list/cashier";
-                    log.info("限定"+userlog.getLogLimit().toString());
+                    url= "redirect:/Sell";
                     log.info("收银员");
                     break;
                 }
                 case 2:{
                     url=  "list/putin";
-                    log.info("限定"+userlog.getLogLimit().toString());
                     log.info("库管");
                     break;
                 }
                 case 3:{
                     url=  "list/infolist";
-                    log.info("限定"+userlog.getLogLimit().toString());
                     log.info("信息员");
                     break;
                 }

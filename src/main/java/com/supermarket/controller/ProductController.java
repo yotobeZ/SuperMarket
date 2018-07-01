@@ -1,22 +1,39 @@
 package com.supermarket.controller;
 
 
+import com.supermarket.pojo.Product;
 import com.supermarket.pojo.ProductExample;
 import com.supermarket.service.ProductMapperService;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+import java.util.List;
+@Log
 @Controller
 public class ProductController {
     @Autowired
     ProductMapperService productMapperService;
+    @RequestMapping(value = "/Sell",method = RequestMethod.GET)
+    public String presell(Model model, HttpSession httpSession){
+        model.addAttribute("prolist",showall());
+        return "list/cashier";
+    }
+
+    @RequestMapping(value = "/Sell",method = RequestMethod.POST)
+    public String sell(){
+
+        return "";
+    }
     @RequestMapping("/Test")
     @ResponseBody
-    public String showall(){
+    public Object showall(){
         ProductExample productExample=new ProductExample();
-        System.out.println(productMapperService.selectByExample(productExample).toString());
-        return productMapperService.selectByExample(productExample).toString();
+        return productMapperService.selectByExample(productExample);
     }
 }

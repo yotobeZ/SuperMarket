@@ -17,7 +17,7 @@ import java.util.List;
  * @Author Liuying[albertliuy@foxmail.com]
  * @Date 2018/3/7 21:18
  */
-@Service
+@Service("ProductMapperService")
 public class ProductMapperServiceImpl implements ProductMapperService {
     @Autowired
     ProductMapper productMapper;

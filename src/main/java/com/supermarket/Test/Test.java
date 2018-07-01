@@ -26,10 +26,10 @@ public class Test {
     public void TestLogin(){
         Userlog userlog=new Userlog();
         userlog.setLogName("sy");
-        userlog.setLogPassword("00");
-        System.out.println(userlogMapperService.login(userlog));
+        userlog.setLogPassword("000");
         List<Userlog> userlogList =userlogMapperService.selectByExample(userlog);
-
+        userlog=userlogList.get(0);
+        System.out.println(userlog.toString());
         for (Userlog test:userlogList
              ) {
             System.out.println(1);
