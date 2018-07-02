@@ -16,4 +16,5 @@ import java.util.List;
 
 public interface ProductMapperService {
     List<Product> selectByExample(ProductExample example);
+    Product selectByName(String proName);
 }

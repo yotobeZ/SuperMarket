@@ -59,7 +59,8 @@ public class LoginController {
                     break;
                 }
                 case 3:{
-                    url=  "list/infolist";
+                    url="redirect:/Testjump";
+                    //url=  "list/infolist";
                     log.info("信息员");
                     break;
                 }

@@ -5,6 +5,7 @@ import com.supermarket.pojo.Product;
 import com.supermarket.pojo.ProductExample;
 import com.supermarket.service.ProductMapperService;
 import lombok.extern.java.Log;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,13 @@ public class ProductController {
         model.addAttribute("prolist",showall());
         return "list/cashier";
     }
+    @RequestMapping(value = "/proselect",method = RequestMethod.POST)
+    @ResponseBody
+    public Object ajaxSelect(@Param("proName")String proName){
+        return productMapperService.selectByName(proName);
+    }
+
+
 
     @RequestMapping(value = "/Sell",method = RequestMethod.POST)
     public String sell(){
@@ -36,4 +44,11 @@ public class ProductController {
         ProductExample productExample=new ProductExample();
         return productMapperService.selectByExample(productExample);
     }
+
+    @RequestMapping("/Testjump")
+    public String Testjump(){
+        return "list/Test";
+    }
+
+
 }

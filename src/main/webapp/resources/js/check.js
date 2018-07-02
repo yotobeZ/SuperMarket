@@ -1,4 +1,5 @@
 $(function () {
+
     $("#stuno").blur(function () {
         $.ajax({
             url:"/check",
@@ -9,5 +10,42 @@ $(function () {
                 $("#show_stuno_result").html(data.info);
             }
         })
+    });
+    $("#select").blur(function () {
+        $.ajax({
+            url:"/proselect",
+            type:"post",
+            dataType:"json",
+            data:{"proName":$("#select").val()},
+            success:function (data) {
+                $("#ProSize").val(data.ProSize);
+                $("#ProDate").val(data.ProDate);
+                $("#ProPrice").val(data.ProPrice);
+            },
+            error:function(){
+                alert("错误");
+            }
+        })
+    });
+    /**
+     * 计算总和
+     * */
+    $(".num").oninput(function () {
+        var num = this.val();
+        var price = $(this).previousSibling.val();
+        $(this).nextSibling.val(num * price);
+    });
+    var newtr=$("#selectedtr").html;
+    /**
+     * 回车事件
+     * 提交选择框内容至detail表格
+     * */
+
+    $(".num").keyup(on (event){
+        if(event.keyCode ==13){
+            alert("回车");
+            $("#detail").appendChild(newtr);
+
+        }
     })
 })

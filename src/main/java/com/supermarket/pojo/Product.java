@@ -2,6 +2,7 @@ package com.supermarket.pojo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Date;
 
 /**
  * Created By MBG-GUI-EXTENSION https://github.com/spawpaw/mybatis-generator-gui-extension
@@ -428,4 +429,15 @@ public class Product implements Serializable {
         result = prime * result + ((getSafeStock() == null) ? 0 : getSafeStock().hashCode());
         return result;
     }
+
+    public Date getproDate() {
+        return proDate;
+    }
+
+    public void setproDate(Date proDate) {
+        this.proDate = proDate;
+    }
+
+    private Date proDate;
+    
 }

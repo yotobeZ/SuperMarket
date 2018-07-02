@@ -315,4 +315,10 @@
       SafeStock = #{safeStock,jdbcType=INTEGER}
     where ProId = #{proId,jdbcType=INTEGER}
   </update>
+    <select id="selectByName" resultMap="selectList"  parameterType="string">
+        select pro.ProName,pro.ProSize,s.ProDate as ProDate,pro.ProPrice from product pro LEFT OUTER JOIN stock s on s.ProId=pro.ProId where pro.proname='苹果'
+    </select>
+    <resultMap id="selectList" type="com.supermarket.pojo.Product">
+        <result column="ProDate" jdbcType="date" property="proDate"/>
+    </resultMap>
 </mapper>
