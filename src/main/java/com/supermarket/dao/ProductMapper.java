@@ -73,4 +73,6 @@ public interface ProductMapper {
      * @mbg.generated Wed Jun 27 15:10:53 CST 2018
      */
     int updateByPrimaryKey(Product record);
+
+    Product selectByName (@Param("proName")String proName);
 }
