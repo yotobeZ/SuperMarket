@@ -24,7 +24,11 @@ public class ProductMapperServiceImpl implements ProductMapperService {
 
     @Override
     public List<Product> selectByExample(ProductExample example) {
-
         return productMapper.selectByExample(example);
+    }
+
+    @Override
+    public Product selectByName(String proName) {
+        return productMapper.selectByName(proName);
     }
 }
