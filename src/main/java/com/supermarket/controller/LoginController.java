@@ -30,7 +30,8 @@ public class LoginController {
     @RequestMapping(value="/date",method = RequestMethod.GET)
     public ModelAndView date(){
         log.info("进入date.jsp");
-        return new ModelAndView("/list/date",new HashMap<>());
+        return new ModelAndView("/list/date");
+//        new HashMap<>()
     }
 
 
@@ -73,12 +74,6 @@ public class LoginController {
                     url="redirect:/Testjump";
                     //url=  "list/infolist";
                     log.info("信息员");
-                    break;
-                }
-                case 4:{
-                    url="redirect:/lihuolist";
-                    //url=  "list/infolist";
-                    log.info("理货员");
                     break;
                 }
                 default:

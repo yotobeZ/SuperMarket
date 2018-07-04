@@ -80,5 +80,5 @@ public interface SalerecordMapper {
 
     //根据日期查询
 
-    List<Salerecord> selectBySaleDate(Date record);
+    List<Salerecord> selectBySaleDate(Salerecord record);
 }

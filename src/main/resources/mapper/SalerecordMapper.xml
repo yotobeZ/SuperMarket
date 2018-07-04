@@ -270,4 +270,12 @@
       and SaleNo = #{saleNo,jdbcType=INTEGER}
       and ProDate = #{proDate,jdbcType=DATE}
   </update>
+  <!--根据销售记录查每天销售额-->
+  <select id="selectBySaleDate" parameterType="com.supermarket.pojo.Salerecord" resultMap="ResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from salerecord
+    where Saledate = #{saleDate,jdbcType=DATE}
+    and ModeOfPay = #{modeOfPay,jdbcType=INTEGER}
+  </select>
 </mapper>
