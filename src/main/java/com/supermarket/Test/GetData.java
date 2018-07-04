@@ -1,14 +1,21 @@
 package com.supermarket.Test;
 
+import sun.util.calendar.BaseCalendar;
+import sun.util.calendar.LocalGregorianCalendar;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+
+import static sun.util.calendar.LocalGregorianCalendar.*;
 
 /**
  * @Author: lly
  * @Date: 2018/7/4 19:59
  */
-public class hash {
+public class GetData {
     public static List<String> DateSale(String str, String spl) {
         String[] strs = null;
         List<String> strList = null;
@@ -23,9 +30,11 @@ public class hash {
         }
         return strList;
     }
-    public static List<HashMap<String, Object>> getDateSale() {
+    public static List<HashMap<String, Object>> getPieRndVal() {
+        Calendar c = Calendar.getInstance();
+      SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd ");
         List<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
-        List<String> names = DateSale("周日, 周一, 周二, 周三, 周四, 周五, 周六", ",");
+        List<String> names = DateSale("df.formatc)(-2, df.format(c)e-1, df.format(c)", ",");
         for (String nam : names) {
             HashMap<String, Object> vals = new HashMap<String, Object>();
             vals.put("name", nam);

@@ -80,5 +80,5 @@ public interface SalerecordMapper {
 
     //根据日期查询
 
-    List<Salerecord> selectBySaleDate(Salerecord record);
+    List<Salerecord> selectBySaleDate(java.sql.Date date);
 }
