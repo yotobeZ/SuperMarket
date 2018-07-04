@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 public interface SalerecordMapperService {
     List<Salerecord> selectByExample(SalerecordExample example);
-    List<Salerecord>  selectBySaleDate(Date date);
+    List<Salerecord> selectBySaleDate(java.sql.Date date);
 //   int sumByDate(java.sql.Date date1,java.sql.Date date2);
      int sumByDate(java.sql.Date date);
 

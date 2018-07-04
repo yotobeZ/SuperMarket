@@ -34,10 +34,21 @@ public class SalerecordMapperServiceImpl implements SalerecordMapperService {
 //
 //    }
     public int sumByDate(java.sql.Date date) {
-        java.sql.Date date1 =new java.sql.Date();
-
-        };
-        salerecordList
+        List<Salerecord> salerecordList = selectBySaleDate(date);
+        salelist=convertList(salerecordList);
+    }
+    private static List convertList(List<Salerecord> salerecordList) throws SQLException{
+        List salelist = new ArrayList();
+        ResultSetMetaData md = salerecordList.getMetaData();//获取键名
+        int columnCount = md.getColumnCount();//获取行的数量
+        while (salerecordList.next()) {
+            Map rowData = new HashMap();//声明Map
+            for (int i = 1; i <= columnCount; i++) {
+                rowData.put(md.getColumnName(i), salerecordList.getObject(i));//获取键名及值
+            }
+            salelist.add(rowData);
+        }
+        return salelist;
     }
 
 }
