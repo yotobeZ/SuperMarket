@@ -30,23 +30,23 @@
 
     function date()
     {
-    ss=document.getElementById("date");
-    ss.style.visibility="visible";
+        ss=document.getElementById("date");
+        ss.style.visibility="visible";
     }
     </script>
     </head>
 
     <body><br><br>
-    <div style="position:absolute;top:0px;left:0px;width:1900;height:80px;background-size:contain; background-image:url(images/bj3.jpg)"> </div><!--style="visibility:hidden"-->
-        <center><div id="div2" style="position:absolute;top:200px;left:50%;height:800px;width:1200px;background-image:url(images/bj6.jpg)"></div>
-        <div id="div3" style="position:absolute;top:200px;left:50%;height:800px;width:1200px;background-image:url(images/bj6.jpg)">
-        <iframe  id="date" style="position:absolute;top:0px;left:0px;width:100%;height:400px;visibility:hidden;" src="date.jsp"></iframe>
+    <div style="position:absolute;top:0px;left:0px;width:1900;height:80px;background-size:contain; background-color:#25a09b"> </div><!--style="visibility:hidden"-->
+        <center>
+        <div id="div3" style="position:absolute;top:200px;left:50%;height:800px;width:1000px;background-color:#87cefa">
+        <iframe  id="date" style="position:absolute;top:0px;left:0px;width:100%;height:400px;visibility:hidden;" src="jsp/list/date.jsp"></iframe>
         </div></center>
 
 
-    <div  style="position: absolute; top: 200px; left: 0px; width: 250px; height: 800px; background-image: url(images/bj2.jpg); font-size: 54px;">
+    <div  style="position: absolute; top: 200px; left: 0px; width: 250px; height: 800px; background-color:#42a3ed; font-size: 54px;">
         <center>
-        <br><input type="button" style="font-size:24" name="date" value="日营业额" onclick="date()"><br><br>
+        <br><input type="button" style="font-size:24" name="date" value="日营业额" onclick=" return date()"><br><br>
         <input type="button" style="font-size:24" name="import" value="周营业额"onclick=""><br><br>
         <input type="button" style="font-size:24" name="storage" value="月营业额" onclick=""><br><br>
 

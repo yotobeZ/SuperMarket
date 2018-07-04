@@ -3,6 +3,8 @@ package com.supermarket.dao;
 import com.supermarket.pojo.Salerecord;
 import com.supermarket.pojo.SalerecordExample;
 import com.supermarket.pojo.SalerecordKey;
+
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -77,5 +79,6 @@ public interface SalerecordMapper {
     int updateByPrimaryKey(Salerecord record);
 
     //根据日期查询
-    Salerecord selectBySaleDate(String record);
+
+    List<Salerecord> selectBySaleDate(Date record);
 }

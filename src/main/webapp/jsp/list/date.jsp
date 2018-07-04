@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: mtwu
   Date: 2018/7/4
@@ -15,9 +18,12 @@
 
 <html>
 <head>
-    <script src="${ctx }/resources/js/jquery-1.12.4.js"></script>
-    <script src="${ctx }/resources/js/echarts.js"></script>
-    <script src="${ctx }/resources/js/cfgopts.js"></script>
+    <%--<script src="${ctx }/resources/js/jquery-1.12.4.js"></script>--%>
+    <%--<script src="${ctx }/resources/js/echarts.js"></script>--%>
+    <%--<script src="${ctx }/resources/js/cfgopts.js"></script>--%>
+        <script src="/resources/js/jquery-1.12.4.js"></script>
+        <script src="/resources/js/echarts.js"></script>
+
 </head>
 <body>
 <style>
@@ -25,37 +31,39 @@
         width: 100%;
         height: 100%;
         margin: 0;
-        background-color: #00CC33;
+        background-color: #d4e1fa;
     }
 </style>
 <div id="bar" style="width: 600px;height: 400px;"></div>
-<script>
-    var barChart;
-    $(function () {
-        barChart = echarts.init(document.getElementById("bar"));
-
-        showBar();
-    });
-
-    function showBar() {
-        $.ajax({
-            type: "GET",
-            url: "${ctx}/tec/barData.html",
-            dataType: 'json',
-            success: function (data) {
-                var barOpt = getBarOpt();
-                barOpt.title.text = '柱形图';
-                barOpt.xAxis[0].name = '日期';
-                barOpt.yAxis[0].name = '数量';
-                barOpt.series[0].name = '柱形图';
-                var fData = fmt.formtBarData(data);
-                barOpt.xAxis[0].data = fData.xAxData;
-                barOpt.series[0].data = fData.serData;
-                barChart.setOption(barOpt);
-            }
-        });
+    <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('bar'));
+    var option = {
+        title: {
+            text: '日营业额'
+        },
+        tooltip: {},
+        legend: {
+            data:['营业额']
+        },
+        xAxis: {
+            data: ["校园卡","现金","支付宝","微信","银行卡"]
+        },
+        yAxis: [
+    {
+        type : 'value',
+            name : '营业额',
+        axisLabel : {
+        formatter: '{value} 元'	//控制输出格式
     }
+        },
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: []
+        }];
+    myChart.setOption(option);
 </script>
+
 </body>
 
 </html>

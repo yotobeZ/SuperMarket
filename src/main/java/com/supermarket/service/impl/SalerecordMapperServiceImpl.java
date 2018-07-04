@@ -7,9 +7,10 @@ import com.supermarket.service.SalerecordMapperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
-@Service("SalerecordMapperService")
-public abstract class SalerecordMapperServiceImpl implements SalerecordMapperService {
+@Service
+public class SalerecordMapperServiceImpl implements SalerecordMapperService {
     @Autowired
     SalerecordMapper salerecordMapper;
 
@@ -19,7 +20,7 @@ public abstract class SalerecordMapperServiceImpl implements SalerecordMapperSer
     }
 
     @Override
-    public Salerecord selectBySaleDate(String saleDate) {
+    public List<Salerecord> selectBySaleDate(Date saleDate) {
         return salerecordMapper.selectBySaleDate(saleDate);
     }
 }
