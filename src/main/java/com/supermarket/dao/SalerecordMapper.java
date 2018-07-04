@@ -42,8 +42,9 @@ public interface SalerecordMapper {
     /**
      *
      * @mbg.generated Wed Jun 27 15:45:53 CST 2018
+     * @param example
      */
-    List<Salerecord> selectByExample();
+    List<Salerecord> selectByExample(SalerecordExample example);
 
     /**
      *
@@ -76,5 +77,5 @@ public interface SalerecordMapper {
     int updateByPrimaryKey(Salerecord record);
 
     //根据日期查询
-    Salerecord selectBySaleDate(Salerecord record);
+    Salerecord selectBySaleDate(String record);
 }

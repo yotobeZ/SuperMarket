@@ -11,17 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class SalerecordController {
     @Autowired
     SalerecordMapperService salerecordMapperService;
-    @RequestMapping(value = "tec")
-    public EcDtUtils() {
-
-    }
 
     @RequestMapping(value = "/datebar",method = RequestMethod.GET)
     public ModelAndView datebar(HttpServletRequest request) {
@@ -31,6 +29,6 @@ public class SalerecordController {
     @RequestMapping(value = "/barData", method = RequestMethod.GET)
     @ResponseBody
     public Object ajaxSelect(@Param("SaleDate")String SaleDate){
-        return salerecordMapperService.selectByDate(SaleDate);
+        return salerecordMapperService.selectBySaleDate(SaleDate);
     }
 }
