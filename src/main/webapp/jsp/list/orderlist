@@ -1,0 +1,54 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+
+    <title>My JSP 'main.jsp' starting page</title>
+
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+     <script type="text/javascript"">
+
+	function sale()
+	{
+	ss=document.getElementById("sale");
+	ss.style.visibility="visible";
+	}
+
+	 </script>
+  </head>
+
+  <body><br><br>
+  <div style="position:absolute;top:0px;left:0px;width:1900;height:80px;background-size:contain; background-image:url(images/bj3.jpg)"> </div><!--style="visibility:hidden"-->
+   <center><div id="div2" style="position:absolute;top:200px;left:50%;height:800px;width:1200px;background-image:url(images/bj6.jpg)"></div>
+   <div id="div3" style="position:absolute;top:200px;left:50%;height:800px;width:1200px;background-image:url(images/bj6.jpg)">
+    <iframe  id="sale" style="position:absolute;top:0px;left:0px;width:100%;height:400px;visibility:hidden;" src="login.jsp"></iframe>
+     <iframe  id="import" style="position:absolute;top:0px;left:0px;width:100%;height:400px;visibility:hidden;" src="login.jsp"></iframe>
+   </div></center>
+
+
+   <div  style="position: absolute; top: 200px; left: 0px; width: 250px; height: 800px; background-image: url(images/bj2.jpg); font-size: 54px;">
+   <center>
+   <br><input type="button" style="font-size:24" name="sale" value="销售管理" onclick="sale()"><br><br>
+   <input type="button" style="font-size:24" name="import" value="进货管理"onclick="ShowDiv('div3')"><br><br>
+   <input type="button" style="font-size:24" name="storage" value="库存管理" onclick="ShowDiv('div4')"><br><br>
+   <input type="button" style="font-size:24" name="people" value="人事管理" onclick="ShowDiv('div5')"><br><br>
+   <input type="button" style="font-size:24" name="goods" value="商品管理"onclick="ShowDiv('div6')"><br><br>
+   <input type="button" style="font-size:24" name="financial" value="财务管理"onclick="ShowDiv('div6')">
+   </center>
+   </div>
+
+  </body>
+</html>
