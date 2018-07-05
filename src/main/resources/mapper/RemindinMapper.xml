@@ -229,7 +229,7 @@
         from remindin rem
         LEFT OUTER JOIN product p on p.ProId=rem.ProId
     </select>
-  <resultMap id="selectList" type="com.supermarket.pojo.Stock">
+  <resultMap id="selectList" type="com.supermarket.pojo.Remindin">
 
     <result column="ProName" jdbcType="CHAR" property="proName"/>
   </resultMap>
