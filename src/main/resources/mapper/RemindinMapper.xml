@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.supermarket.dao.RemindinMapper">
+  <resultMap id="BaseResultMap" type="com.supermarket.pojo.Remindin">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <id column="ProId" jdbcType="INTEGER" property="proId" />
+    <result column="InNum" jdbcType="INTEGER" property="inNum" />
+    <result column="RemDate" jdbcType="DATE" property="remDate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    ProId, InNum, RemDate
+  </sql>
+  <select id="selectByExample" parameterType="com.supermarket.pojo.RemindinExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from remindin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from remindin
+    where ProId = #{proId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    delete from remindin
+    where ProId = #{proId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.supermarket.pojo.RemindinExample">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    delete from remindin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.supermarket.pojo.Remindin">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    insert into remindin (ProId, InNum, RemDate
+      )
+    values (#{proId,jdbcType=INTEGER}, #{inNum,jdbcType=INTEGER}, #{remDate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.supermarket.pojo.Remindin">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    insert into remindin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proId != null">
+        ProId,
+      </if>
+      <if test="inNum != null">
+        InNum,
+      </if>
+      <if test="remDate != null">
+        RemDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proId != null">
+        #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="inNum != null">
+        #{inNum,jdbcType=INTEGER},
+      </if>
+      <if test="remDate != null">
+        #{remDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.supermarket.pojo.RemindinExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    select count(*) from remindin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update remindin
+    <set>
+      <if test="record.proId != null">
+        ProId = #{record.proId,jdbcType=INTEGER},
+      </if>
+      <if test="record.inNum != null">
+        InNum = #{record.inNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.remDate != null">
+        RemDate = #{record.remDate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update remindin
+    set ProId = #{record.proId,jdbcType=INTEGER},
+      InNum = #{record.inNum,jdbcType=INTEGER},
+      RemDate = #{record.remDate,jdbcType=DATE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.supermarket.pojo.Remindin">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update remindin
+    <set>
+      <if test="inNum != null">
+        InNum = #{inNum,jdbcType=INTEGER},
+      </if>
+      <if test="remDate != null">
+        RemDate = #{remDate,jdbcType=DATE},
+      </if>
+    </set>
+    where ProId = #{proId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.supermarket.pojo.Remindin">
+    <!--
+      WARNING - @mbg.generated  This element was generated on Thu Jul 05 10:06:15 CST 2018. by MyBatis Generator, do not modify.
+    -->
+    update remindin
+    set InNum = #{inNum,jdbcType=INTEGER},
+      RemDate = #{remDate,jdbcType=DATE}
+    where ProId = #{proId,jdbcType=INTEGER}
+  </update>
+</mapper>
