@@ -17,6 +17,15 @@ public class Remindin implements Serializable {
      * @mbg.generated Thu Jul 05 10:06:15 CST 2018
      */
     private Integer proId;
+    private String proName;
+
+    public String getProName() {
+        return proName;
+    }
+
+    public void setProName(String proName) {
+        this.proName = proName;
+    }
 
     /**
      *

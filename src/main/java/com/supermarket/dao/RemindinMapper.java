@@ -49,6 +49,7 @@ public interface RemindinMapper {
      * @mbg.generated Thu Jul 05 10:06:15 CST 2018
      */
     Remindin selectByPrimaryKey(Integer proId);
+    List<Remindin>  selectInfo();
 
     /**
      *

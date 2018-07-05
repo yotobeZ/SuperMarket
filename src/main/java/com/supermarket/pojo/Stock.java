@@ -1,7 +1,11 @@
 package com.supermarket.pojo;
 
 import java.io.Serializable;
+<<<<<<< HEAD
 import  com.supermarket.pojo.Product;
+=======
+
+>>>>>>> origin/develop
 /**
  * Created By MBG-GUI-EXTENSION https://github.com/spawpaw/mybatis-generator-gui-extension
  * Description:
@@ -16,8 +20,18 @@ public class Stock extends StockKey implements Serializable {
      * @mbg.generated Wed Jun 27 15:47:12 CST 2018
      */
     private Integer storeNum;
+    private String proName;
+
+    public String getProName() {
+        return proName;
+    }
+
+    public void setProName(String proName) {
+        this.proName = proName;
+    }
 
     /**
+
      *
      * @mbg.generated Wed Jun 27 15:47:12 CST 2018
      */

@@ -1,5 +1,6 @@
 package com.supermarket.dao;
 
+import com.supermarket.pojo.Page;
 import com.supermarket.pojo.Stock;
 import com.supermarket.pojo.StockExample;
 import com.supermarket.pojo.StockKey;
@@ -44,6 +45,8 @@ public interface StockMapper {
      * @mbg.generated Wed Jun 27 15:47:12 CST 2018
      */
     List<Stock> selectByExample(StockExample example);
+    List<Stock> selectInfo();
+    List<Stock> selectInfo(Page page);
 
     /**
      *
@@ -75,5 +78,9 @@ public interface StockMapper {
      */
     int updateByPrimaryKey(Stock record);
 
+<<<<<<< HEAD
    List <Stock> findpromCata(String proCatagory);
+=======
+    int total();
+>>>>>>> origin/develop
 }
