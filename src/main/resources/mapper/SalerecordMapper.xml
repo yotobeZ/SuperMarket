@@ -270,14 +270,4 @@
       and SaleNo = #{saleNo,jdbcType=INTEGER}
       and ProDate = #{proDate,jdbcType=DATE}
   </update>
-  <!--根据销售记录查每天销售额-->
-  <select id="selectBySaleDate" resultMap="recordList"  parameterType="string">
-    select pro.ProPrice,s.SaleNum
-    from product pro
-    LEFT OUTER JOIN salerecord s on s.ProId=pro.ProId
-    where s.proname=#{SaleDate}
-  </select>
-  <resultMap id="selectList" type="com.supermarket.pojo.Salerecord">
-    <result column="ProDate" jdbcType="DATE" property="proDate"/>
-  </resultMap>
 </mapper>
