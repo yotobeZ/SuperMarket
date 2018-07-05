@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -29,8 +30,9 @@ public class Test {
     SalerecordMapperService salerecordMapperService;
     @Autowired
     SalerecordMapper salerecordMapper;
+
     @org.junit.Test
-    public void TestLogin(){
+    public void TestLogin() {
      /*   Userlog userlog=new Userlog();
         userlog.setLogName("sy");
         userlog.setLogPassword("000");
@@ -42,23 +44,31 @@ public class Test {
             System.out.println(1);
             System.out.println(test.toString());
         }*/
-        int[]id={3,5};
-        int[]num={1,2};
-        int payway=2;
-        Date[] pdate={new Date(2018-03-02),new Date(2018-05-11)};
+        SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
+        int[] id = {3, 5};
+        int[] num = {1, 2};
+        int payway = 2;
+        Date[] pdate = {new Date(2018 - 03 - 02), new Date(2018 - 05 - 11)};
         System.out.println(id.length);
-        Salerecord salerecord1=new Salerecord();
-        salerecord1.setProDate(new Date(2018-03-02));
+        Salerecord salerecord1 = new Salerecord();
+        salerecord1.setProDate(new Date(2018 - 03 - 02));
         salerecord1.setSaleNum(1);
         salerecord1.setProId(3);
         salerecord1.setModeOfPay(payway);
         salerecord1.setSaleDate(new java.util.Date());
-
+        salerecord1.setSaleNo(idWorker.getId());
         int j = salerecordMapper.insertSelective(salerecord1);
         //int i=salerecordMapperService.insertByIdNumDatePayway(id,num,pdate,payway);
         //System.out.println(i);
-        System.out.println("j:"+j);
+        System.out.println("j:" + j);
 
 
     }
+
+    @org.junit.Test
+    public void Testdate() {
+        System.out.println(System.currentTimeMillis());
+    }//1530823274166
+    //  2147483647
+
 }

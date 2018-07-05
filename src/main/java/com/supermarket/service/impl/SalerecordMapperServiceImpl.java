@@ -8,6 +8,7 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 @Log
@@ -34,6 +35,17 @@ public class SalerecordMapperServiceImpl implements SalerecordMapperService {
             i +=salerecordMapper.insertSelective(salerecord);
             log.info(salerecord.toString());
         }
+        return i;
+    }
+        public int getId() {
+        String id = "";
+        //获取当前时间戳
+        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String temp = sf.format(new java.util.Date());
+        //获取6位随机数
+        int random = (int) ((Math.random() + 1) * 100000);
+        id = temp + random;
+        int i=Integer.valueOf(id);
         return i;
     }
 
