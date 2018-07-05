@@ -3,7 +3,8 @@
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.Calendar" %>
-<%@ page import="java.text.SimpleDateFormat" %><%--
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="static java.lang.Integer.parseInt" %><%--
   Created by IntelliJ IDEA.
   User: mtwu
   Date: 2018/7/4
@@ -70,14 +71,13 @@
         <td>销售单号</td>
         <td>单金额</td>
     </tr>
+
 <%
     String driverClass="com.mysql.jdbc.Driver";
     String url="jdbc:mysql://localhost:3306/supermarket";
     String user="root";
     String password="root";
     Connection conn;
-      Calendar c = Calendar.getInstance();
-      SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd ");
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     java.util.Date currentTime = new java.util.Date();//得到当前系统时间
     String date1 = formatter.format(currentTime); //将日期时间格式化
@@ -90,18 +90,25 @@
         String sql="select salerecord.SaleNo,product.ProPrice*salerecord.SaleNum AS ProMo\n" +
                 "from product LEFT OUTER JOIN salerecord ON product.ProId=salerecord.ProId\n" +
                 "where salerecord.SaleDate=('"+date1+"')" ;
-//                 "cast(''";
-//                                sql+=date1;
-//                            sql+=" ''as Date)";
         ResultSet rs=stmt.executeQuery(sql);
-        while(rs.next()){
+        float SUM = 0;
+       while(rs.next()){
+
 %>
 <tr>
     <td><%=rs.getString("SaleNo") %></td>
     <td><%=rs.getString("ProMo") %></td>
 </tr>
 <%
+       SUM+=Float.parseFloat(rs.getString("ProMo"));
         }
+%>
+<tr>
+    <td> 总计</td>
+    <td><%=SUM%></td>
+    </tr>
+    <%
+
     }
     catch(Exception ex){
         ex.printStackTrace();
