@@ -224,21 +224,6 @@
       and ProDate = #{proDate,jdbcType=DATE}
   </update>
 
-<<<<<<< HEAD
-  <select id="findpromCata" resultMap="promList" >
-       SELECT pro.ProId,pro.ProName,s.StoreNum,p.ProDate,pro.SalesDay,(p.ExpDate-CURRENT_DATE) AS restday
-        FROM stock s
-        LEFT OUTER JOIN  putin p ON p.ProId=s.ProId AND p.ProDate=s.ProDate LEFT OUTER JOIN product pro ON pro.ProId=s.ProId
-        WHERE (p.ExpDate-CURRENT_DATE) BETWEEN 0 AND pro.SalesDay  and  pro.proCatagory=#{proCatagory};
-    </select>
-    <resultMap id="promList" type="com.supermarket.pojo.Stock">
-        <result column="ProName" jdbcType="CHAR" property="proName" />
-             <result property="proId" column="ProId" />
-              <result column="ProvideId"  property="provideId" />
-              <result column="ProDate" jdbcType="DATE" property="proDate" />
-        <result column="SalesDay" jdbcType="INTEGER" property="salesDay" />
-    </resultMap>
-=======
   <select id="total" resultType="int">
             select count(*) from   stock
         </select>
@@ -256,6 +241,5 @@
 
     <result column="ProName" jdbcType="CHAR" property="proName"/>
   </resultMap>
->>>>>>> origin/develop
 
 </mapper>

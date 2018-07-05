@@ -78,9 +78,5 @@ public interface StockMapper {
      */
     int updateByPrimaryKey(Stock record);
 
-<<<<<<< HEAD
-   List <Stock> findpromCata(String proCatagory);
-=======
     int total();
->>>>>>> origin/develop
 }

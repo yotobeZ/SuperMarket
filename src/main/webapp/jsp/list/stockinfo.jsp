@@ -29,11 +29,6 @@
 
     </c:forEach>
 </table>
-    <div style="text-align:center">
-        <a href="?start=0">首  页</a>
-        <a href="?start=${page.start-page.count}">上一页</a>
-        <a href="?start=${page.start+page.count}">下一页</a>
-        <a href="?start=${page.last}">末  页</a>
-    </div>
+
 </body>
 </html>
