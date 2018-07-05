@@ -16,14 +16,14 @@ public class StockKey implements Serializable {
      *
      * @mbg.generated Wed Jun 27 15:47:12 CST 2018
      */
-    private Integer proId;
+    public Integer proId;
 
     /**
      *
      *
      * @mbg.generated Wed Jun 27 15:47:12 CST 2018
      */
-    private Date proDate;
+    public Date proDate;
 
     /**
      *

@@ -2,7 +2,6 @@ package com.supermarket.pojo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Date;
 
 /**
  * Created By MBG-GUI-EXTENSION https://github.com/spawpaw/mybatis-generator-gui-extension
@@ -17,14 +16,15 @@ public class Product implements Serializable {
      *
      * @mbg.generated Wed Jun 27 15:10:53 CST 2018
      */
-    private Integer proId;
+    /**mapper返回**/
 
+    public Integer proId;
     /**
      *
      *
      * @mbg.generated Wed Jun 27 15:10:53 CST 2018
      */
-    private String proName;
+    public String proName;
 
     /**
      *
@@ -59,7 +59,7 @@ public class Product implements Serializable {
      *
      * @mbg.generated Wed Jun 27 15:10:53 CST 2018
      */
-    private Integer salesDay;
+    public Integer salesDay;
 
     /**
      *
@@ -430,14 +430,4 @@ public class Product implements Serializable {
         return result;
     }
 
-    public Date getproDate() {
-        return proDate;
-    }
-
-    public void setproDate(Date proDate) {
-        this.proDate = proDate;
-    }
-
-    private Date proDate;
-    
 }

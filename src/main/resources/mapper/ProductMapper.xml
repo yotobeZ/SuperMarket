@@ -322,7 +322,6 @@
         where pro.proname=#{proName}
     </select>
     <resultMap id="selectList" type="com.supermarket.pojo.Product">
-
-        <result column="ProDate" jdbcType="DATE" property="proDate"/>
+      <result column="ProDate" jdbcType="DATE" property="proDate"/>
     </resultMap>
 </mapper>

@@ -22,8 +22,8 @@ import java.util.List;
 public class RemindinController {
     @Autowired
     RemindinMapperService remindinMapperService;
-    @RequestMapping(value = "/showRemind",method = RequestMethod.POST)
-    @ResponseBody
+    @RequestMapping(value = "/showRemind",method = RequestMethod.GET)
+
     public String show(Model model ){
         List<Remindin> remindinsList=remindinMapperService.selectInfo();
         model.addAttribute("remindinsList",remindinsList);
