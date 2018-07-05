@@ -30,7 +30,7 @@ $(function () {
     /**
      * 计算总和
      * */
-    $(".num").oninput(function () {
+    $(".num").on('input propertychange',function () {
         var num = this.val();
         var price = $(this).previousSibling.val();
         $(this).nextSibling.val(num * price);
@@ -41,11 +41,10 @@ $(function () {
      * 提交选择框内容至detail表格
      * */
 
-    $(".num").keyup(on (event){
+    $(".num").keyup(function (event) {
         if(event.keyCode ==13){
             alert("回车");
             $("#detail").appendChild(newtr);
-
         }
     })
 })

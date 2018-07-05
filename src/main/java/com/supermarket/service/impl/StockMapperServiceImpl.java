@@ -24,6 +24,8 @@ public class StockMapperServiceImpl implements StockMapperService {
     public List<Stock> selectInfo() {
         return stockMapper.selectInfo();
     }*/
+    public List<Stock> findpromCata(String proCatagory){
+        return stockMapper.findpromCata(  proCatagory);}
 
     @Override
     public List<Stock> list() {

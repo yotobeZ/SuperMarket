@@ -1,11 +1,9 @@
 package com.supermarket.pojo;
 
-import java.io.Serializable;
-<<<<<<< HEAD
 import  com.supermarket.pojo.Product;
-=======
 
->>>>>>> origin/develop
+import java.io.Serializable;
+
 /**
  * Created By MBG-GUI-EXTENSION https://github.com/spawpaw/mybatis-generator-gui-extension
  * Description:
@@ -22,22 +20,12 @@ public class Stock extends StockKey implements Serializable {
     private Integer storeNum;
     private String proName;
 
-    public String getProName() {
-        return proName;
-    }
-
-    public void setProName(String proName) {
-        this.proName = proName;
-    }
-
     /**
-
      *
      * @mbg.generated Wed Jun 27 15:47:12 CST 2018
      */
     private static final long serialVersionUID = 1L;
 
-    private  String  proName;
     private  Integer  salesDay;
 
     public String getProName() {

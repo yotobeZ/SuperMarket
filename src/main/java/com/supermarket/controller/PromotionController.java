@@ -32,7 +32,7 @@ public String promm(Model model,HttpServletRequest request, HttpSession httpSess
         String pc= request.getParameter("proCatagory");
 
        List<Stock> stlist= stockMapperService.findpromCata(pc);
-    //    System.out.println(stlist.get(0)) ;
+       System.out.println(stlist.get(0)) ;
        model.addAttribute("prom",stlist);
   //model.addAttribute("st",stlist);
       System.out.println(stlist);

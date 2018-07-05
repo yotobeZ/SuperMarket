@@ -17,4 +17,5 @@ public interface StockMapperService {
     List<Stock> list();
     int total();
     List<Stock> list(Page page);
+    List<Stock>   findpromCata(String proCatagory);
 }

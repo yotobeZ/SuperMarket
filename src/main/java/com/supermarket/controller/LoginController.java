@@ -48,7 +48,6 @@ public class LoginController {
             url="redirect:/";
         }
         else{
-            model.addAttribute("result","2");
             userlog=userlogMapperService.selectByExample(userlog).get(0);
             /**
              * 登陆权限判断

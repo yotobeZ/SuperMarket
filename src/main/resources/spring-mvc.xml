@@ -32,4 +32,28 @@
 
     <!--开通静态资源的访问-->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json</value>
+                    </list>
+                </property>
+                <property name="features">
+                    <list>
+                        <value>WriteMapNullValue</value>
+                        <value>QuoteFieldNames</value>
+                    </list>
+                </property>
+                <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+
+
 </beans>
