@@ -30,6 +30,7 @@
 
     function date()
     {
+        window.parent.document.getElementById("week").style.display="none";
         ss=document.getElementById("date");
         ss.style.visibility="visible";
     }
