@@ -270,5 +270,4 @@
       and SaleNo = #{saleNo,jdbcType=INTEGER}
       and ProDate = #{proDate,jdbcType=DATE}
   </update>
-
 </mapper>

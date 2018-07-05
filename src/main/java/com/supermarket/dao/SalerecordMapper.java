@@ -78,5 +78,7 @@ public interface SalerecordMapper {
      */
     int updateByPrimaryKey(Salerecord record);
 
+    //根据日期查询
 
+//    List<Salerecord> selectBySaleDate(java.sql.Date date);
 }
