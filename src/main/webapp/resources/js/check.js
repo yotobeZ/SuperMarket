@@ -51,7 +51,6 @@ $(function () {
         if(event.keyCode ==13){
             var newtr="<input hidden name='proId'value='"+$("#ProId").val()+"'>"+"<input name='proName' value="+proName+">"+"<input value="+$("#ProSize").val()+">"+"<input name='proDate' value="+$("#ProDate").val()+">"+"<input value="+ $("#ProPrice").val()+">"
                 +"<input name='proNum' value="+$("#num").val()+">"+"<input value="+$("#sumprice").val()+"><br>";
-            alert(newtr);
             $('#selectinput').val('');
             $("#ProSize").val('');
             $("#ProDate").val('');
@@ -73,8 +72,8 @@ $(function () {
             success:function (data) {
                 alert("成功")
             },
-            error:function(info){
-                alert(info.info);
+            error:function(data){
+
             }
         })
     })

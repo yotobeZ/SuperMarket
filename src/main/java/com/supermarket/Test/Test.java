@@ -57,18 +57,19 @@ public class Test {
         salerecord1.setModeOfPay(payway);
         salerecord1.setSaleDate(new java.util.Date());
         salerecord1.setSaleNo(idWorker.getId());
-        int j = salerecordMapper.insertSelective(salerecord1);
-        //int i=salerecordMapperService.insertByIdNumDatePayway(id,num,pdate,payway);
-        //System.out.println(i);
-        System.out.println("j:" + j);
+        //int j = salerecordMapper.insert(salerecord1);
+        int i=salerecordMapperService.insertByIdNumDatePayway(id,num,pdate,payway);
+        System.out.println(i);
+        //System.out.println("j:" + j);
 
 
     }
 
     @org.junit.Test
     public void Testdate() {
-        System.out.println(System.currentTimeMillis());
+        SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
+        System.out.println(idWorker.getId());
     }//1530823274166
-    //  2147483647
-
+    // 2147483647
+    // 1530823848
 }

@@ -1,5 +1,6 @@
 package com.supermarket.service.impl;
 
+import com.supermarket.Test.SnowflakeIdWorker;
 import com.supermarket.dao.SalerecordMapper;
 import com.supermarket.pojo.Salerecord;
 import com.supermarket.pojo.SalerecordExample;
@@ -25,6 +26,7 @@ public class SalerecordMapperServiceImpl implements SalerecordMapperService {
     @Override
     public int insertByIdNumDatePayway(int[] id, int[] num, java.sql.Date[] date, int payway) {
         int i=0;
+        SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
         for (int j = 0; j <id.length; j++) {
             Salerecord salerecord=new Salerecord();
             salerecord.setModeOfPay(payway);
@@ -32,6 +34,7 @@ public class SalerecordMapperServiceImpl implements SalerecordMapperService {
             salerecord.setProId(id[j]);
             salerecord.setSaleNum(num[j]);
             salerecord.setProDate(date[j]);
+            salerecord.setSaleNo(idWorker.getId());
             i +=salerecordMapper.insertSelective(salerecord);
             log.info(salerecord.toString());
         }
