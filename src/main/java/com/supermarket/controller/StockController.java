@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 @Log
@@ -23,11 +25,18 @@ public class StockController {
     @Autowired
     StockMapperService stockMapperService;
     @RequestMapping(value = "/showStock",method = RequestMethod.GET)
-    public String show(Model model){
+    public ModelAndView show()throws Exception{
         List<Stock> stocksList=stockMapperService.selectInfo();
-        model.addAttribute("stocksList",stocksList);
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.addObject("stocksList",stocksList);
+        //model.addAttribute("stocksList",stocksList);
         log.info("显示"+stocksList.toString());
-        return "list/stockinfo";
+        //return "list/stockinfo";
+        modelAndView.setViewName("list/stockinfo");
+
+
+        return modelAndView;
+
     }
 
 }

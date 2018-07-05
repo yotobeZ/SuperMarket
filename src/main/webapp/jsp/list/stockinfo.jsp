@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -23,8 +24,6 @@
         <tr><td>${stocks.ProName}</td>
             <td>${stocks.ProDate}</td>
             <td>${stocks.StoreNum}</td>
-            <td>
-            </td>
 
     </c:forEach>
 </table>

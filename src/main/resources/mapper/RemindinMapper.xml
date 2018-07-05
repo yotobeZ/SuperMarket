@@ -227,7 +227,7 @@
   <select id="selectInfo" resultMap="selectList"  parameterType="string">
         select rem.ProId,rem.InNum,rem.RemDate,p.ProName as ProName
         from remindin rem
-        LEFT OUTER JOIN product p on p.ProId=sto.ProId
+        LEFT OUTER JOIN product p on p.ProId=rem.ProId
     </select>
   <resultMap id="selectList" type="com.supermarket.pojo.Stock">
 
