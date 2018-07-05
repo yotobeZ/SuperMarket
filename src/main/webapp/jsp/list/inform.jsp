@@ -13,12 +13,11 @@
 </head>
 </head>
 <body>
-        <h1>促销通知</h1>
-        <form action="/promm" method="post">
-            商品种类：<input id ="proCatagory" type="text" name="proCatagory">
-            <input type="submit" value="促销查询">
-        </form>
+<h1>促销通知</h1>
+<form action="/promm" method="post">
+    商品种类：<input id ="proCatagory" type="text" name="proCatagory">
+    <input type="submit" value="促销查询">
+</form>
 
 </body>
 </html>
-<!--Promotion.action"
