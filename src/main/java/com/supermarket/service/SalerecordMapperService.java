@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 public interface SalerecordMapperService {
     List<Salerecord> selectByExample(SalerecordExample example);
-    int insertByIdNumDatePayway(int[]id, int[]num, java.sql.Date[] date,int payway);
+    int insertByIdNumDatePayway(int[]id, int[]num,String[] name,int payway);
 
 
 //    List<Salerecord> selectBySaleDate(java.sql.Date date);

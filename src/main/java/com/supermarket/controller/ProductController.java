@@ -40,15 +40,14 @@ public class ProductController {
 
 
     @RequestMapping(value = "/Sell",method = RequestMethod.POST)
-    public String sell(Model model,@Param("payway")int payway, @Param("proId")int[] proId, @Param("proNum")int[] proNum, @Param("proDate")Date[] proDate){
+    public String sell(Model model,@Param("payway")int payway, @Param("proId")int[] proId, @Param("proNum")int[] proNum, @Param("proName")String[] proName){
         int i =proId.length;
         log.info(""+i);
-        int j =salerecordMapperService.insertByIdNumDatePayway(proId,proNum,proDate,payway);
+        int j =salerecordMapperService.insertByIdNumDatePayway(proId,proNum,proName,payway);
         log.info("i:"+i+","+"j:"+j);
         String url="";
         if (i!=j){
             model.addAttribute("info","结算失败请查看日志");
-
         }else {
             model.addAttribute("info","成功生成"+i+"条销售记录");
             url="redirect:/Sell";

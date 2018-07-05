@@ -2,8 +2,10 @@ package com.supermarket.service.impl;
 
 import com.supermarket.Test.SnowflakeIdWorker;
 import com.supermarket.dao.SalerecordMapper;
+import com.supermarket.pojo.Product;
 import com.supermarket.pojo.Salerecord;
 import com.supermarket.pojo.SalerecordExample;
+import com.supermarket.service.ProductMapperService;
 import com.supermarket.service.SalerecordMapperService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ import java.util.List;
 public class SalerecordMapperServiceImpl implements SalerecordMapperService {
     @Autowired
     SalerecordMapper salerecordMapper;
+    @Autowired
+    ProductMapperService productMapperService;
 
     @Override
     public List<Salerecord> selectByExample(SalerecordExample example) {
@@ -24,22 +28,26 @@ public class SalerecordMapperServiceImpl implements SalerecordMapperService {
     }
 
     @Override
-    public int insertByIdNumDatePayway(int[] id, int[] num, java.sql.Date[] date, int payway) {
+    public int insertByIdNumDatePayway(int[] id, int[] num, String[] name, int payway) {
         int i=0;
         SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
+        Product product;
         for (int j = 0; j <id.length; j++) {
             Salerecord salerecord=new Salerecord();
+            product=productMapperService.selectByName(name[j]);
             salerecord.setModeOfPay(payway);
             salerecord.setSaleDate(new Date());
             salerecord.setProId(id[j]);
             salerecord.setSaleNum(num[j]);
-            salerecord.setProDate(date[j]);
+            salerecord.setProDate(product.getProDate());
             salerecord.setSaleNo(idWorker.getId());
             i +=salerecordMapper.insertSelective(salerecord);
             log.info(salerecord.toString());
         }
         return i;
     }
+
+
         public int getId() {
         String id = "";
         //获取当前时间戳
