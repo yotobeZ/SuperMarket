@@ -1,6 +1,7 @@
 package com.supermarket.controller;
 
 
+import com.supermarket.pojo.Page;
 import com.supermarket.pojo.Stock;
 import com.supermarket.service.StockMapperService;
 import lombok.extern.java.Log;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 @Log
@@ -19,14 +21,29 @@ public class StockController {
     StockMapperService stockMapperService;
     @RequestMapping(value = "/showStock",method = RequestMethod.GET)
 
+    public ModelAndView listStock(Page page){
+
+        ModelAndView mav = new ModelAndView();
+        List<Stock> stocksList= stockMapperService.list(page);
+        int total = stockMapperService.total();
+
+        page.caculateLast(total);
+
+        // 放入转发参数
+        mav.addObject("stocksList", stocksList);
+        // 放入jsp路径
+        mav.setViewName("list/stockinfo");
+        return mav;
+    }
+
+  /*
     public String show(Model model ){
         List<Stock> stocksList=stockMapperService.selectInfo();
         model.addAttribute("stocksList",stocksList);
         log.info("显示"+stocksList.toString());
         return "list/stockinfo";
-
     }
-
+*/
 }
 
 

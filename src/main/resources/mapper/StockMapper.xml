@@ -224,10 +224,17 @@
       and ProDate = #{proDate,jdbcType=DATE}
   </update>
 
+  <select id="total" resultType="int">
+            select count(*) from   stock
+        </select>
+
   <select id="selectInfo" resultMap="selectList"  parameterType="string">
         select sto.ProId,sto.StoreNum,sto.ProDate,p.ProName as ProName
         from stock sto
         LEFT OUTER JOIN product p on p.ProId=sto.ProId
+    <if test="start!=null and count!=null">
+      limit #{start},#{count}
+    </if>
 
     </select>
   <resultMap id="selectList" type="com.supermarket.pojo.Stock">

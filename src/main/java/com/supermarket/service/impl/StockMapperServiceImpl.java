@@ -1,6 +1,7 @@
 package com.supermarket.service.impl;
 
 import com.supermarket.dao.StockMapper;
+import com.supermarket.pojo.Page;
 import com.supermarket.pojo.Stock;
 import com.supermarket.service.StockMapperService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,23 @@ public class StockMapperServiceImpl implements StockMapperService {
     @Autowired
     StockMapper stockMapper;
 
-    @Override
+    /*@Override
     public List<Stock> selectInfo() {
         return stockMapper.selectInfo();
+    }*/
+
+    @Override
+    public List<Stock> list() {
+        return stockMapper.selectInfo();
+    }
+
+    @Override
+    public int total() {
+        return stockMapper.total();
+    }
+
+    @Override
+    public List<Stock> list(Page page) {
+        return stockMapper.selectInfo(page);
     }
 }

@@ -1,5 +1,6 @@
 package com.supermarket.service;
 
+import com.supermarket.pojo.Page;
 import com.supermarket.pojo.Stock;
 
 import java.util.List;
@@ -12,5 +13,8 @@ import java.util.List;
  */
 
 public interface StockMapperService {
-    List<Stock> selectInfo();
+    //List<Stock> selectInfo();
+    List<Stock> list();
+    int total();
+    List<Stock> list(Page page);
 }
