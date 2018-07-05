@@ -3,6 +3,8 @@ package com.supermarket.dao;
 import com.supermarket.pojo.Salerecord;
 import com.supermarket.pojo.SalerecordExample;
 import com.supermarket.pojo.SalerecordKey;
+
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -42,6 +44,7 @@ public interface SalerecordMapper {
     /**
      *
      * @mbg.generated Wed Jun 27 15:45:53 CST 2018
+     * @param example
      */
     List<Salerecord> selectByExample(SalerecordExample example);
 
@@ -74,4 +77,8 @@ public interface SalerecordMapper {
      * @mbg.generated Wed Jun 27 15:45:53 CST 2018
      */
     int updateByPrimaryKey(Salerecord record);
+
+    //根据日期查询
+
+    List<Salerecord> selectBySaleDate(java.sql.Date date);
 }

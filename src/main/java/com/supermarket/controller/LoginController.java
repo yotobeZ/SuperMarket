@@ -2,19 +2,24 @@ package com.supermarket.controller;
 
 import com.supermarket.pojo.Userlog;
 import com.supermarket.service.UserlogMapperService;
-import lombok.extern.java.Log;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
-@Log
 @Controller
 public class LoginController {
+
+    private Log log = LogFactory.getLog(this.getClass());
+
     @Autowired
     UserlogMapperService userlogMapperService;
     @RequestMapping(value="/prelogin",method = RequestMethod.GET)
@@ -22,6 +27,13 @@ public class LoginController {
         log.info("进入预登陆");
         return "/login";
     }
+    @RequestMapping(value="/date",method = RequestMethod.GET)
+    public ModelAndView date(){
+        log.info("进入date.jsp");
+        return new ModelAndView("/list/date");
+//        new HashMap<>()
+    }
+
 
     @RequestMapping(value="/login",method = RequestMethod.POST)
     public String login(@ModelAttribute("Userlog")Userlog userlog, Model model, HttpSession session){
@@ -77,6 +89,7 @@ public class LoginController {
         }
         return url;
     }
+
 }
 
 
