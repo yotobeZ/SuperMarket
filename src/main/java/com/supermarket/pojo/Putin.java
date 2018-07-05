@@ -66,7 +66,14 @@ public class Putin extends PutinKey implements Serializable {
      * @mbg.generated Wed Jun 27 15:13:46 CST 2018
      */
     private static final long serialVersionUID = 1L;
+    private  Product product;
 
+    public Product getProduct() {
+        return product;
+    }
+    public void setProduct(Product product) {
+        this.product = product;
+    }
     /**
      * This method returns the value of the database column putin.ProvideId
      *
@@ -301,6 +308,7 @@ public class Putin extends PutinKey implements Serializable {
         sb.append(", impDate=").append(impDate);
         sb.append(", expDate=").append(expDate);
         sb.append(", operator=").append(operator);
+        sb.append(", product=").append(product);
         sb.append("]");
         return sb.toString();
     }

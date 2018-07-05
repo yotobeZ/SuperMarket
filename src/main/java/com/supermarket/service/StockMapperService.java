@@ -1,5 +1,7 @@
 package com.supermarket.service;
-
+import com.supermarket.pojo.Stock;
+import com.supermarket.pojo.StockExample;
+import java.util.List;
 /**
  * @ClassName com.supermarket.service
  * @Description
@@ -8,4 +10,5 @@ package com.supermarket.service;
  */
 
 public interface StockMapperService {
+    public  List<Stock>   findpromCata(String proCatagory);
 }

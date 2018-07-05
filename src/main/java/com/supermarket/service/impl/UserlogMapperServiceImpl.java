@@ -12,8 +12,6 @@ import java.util.List;
 public class UserlogMapperServiceImpl implements UserlogMapperService {
     @Autowired
     UserlogMapper userlogMapper;
-
-
     @Override
     public boolean login(Userlog userlog) {
         UserlogExample userlogExample = new UserlogExample();
@@ -27,8 +25,6 @@ public class UserlogMapperServiceImpl implements UserlogMapperService {
                 return true;
             }
         }
-
-
     @Override
     public List<Userlog> selectByExample(Userlog userlog) {
         UserlogExample userlogExample = new UserlogExample();
@@ -37,6 +33,8 @@ public class UserlogMapperServiceImpl implements UserlogMapperService {
         criteria.andLogPasswordEqualTo(userlog.getLogPassword());
         return userlogMapper.selectByExample(userlogExample);
     }
+
+
 }
 
 

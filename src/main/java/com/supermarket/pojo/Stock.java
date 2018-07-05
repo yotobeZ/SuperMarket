@@ -1,7 +1,7 @@
 package com.supermarket.pojo;
 
 import java.io.Serializable;
-
+import  com.supermarket.pojo.Product;
 /**
  * Created By MBG-GUI-EXTENSION https://github.com/spawpaw/mybatis-generator-gui-extension
  * Description:
@@ -23,6 +23,33 @@ public class Stock extends StockKey implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
+    private  String  proName;
+    private  Integer  salesDay;
+
+    public String getProName() {
+        return proName;
+    }
+
+    public void setProName(String proName) {
+        this.proName = proName;
+    }
+    private Integer restday;
+    public void setRestday(Integer restday) {
+        this.restday=  restday;
+    }
+
+    public Integer getRestday() {
+        return  restday;
+    }
+
+    public void setSalesDay(Integer salesDay) {
+        this.salesDay = salesDay;
+    }
+
+    public Integer getSalesDay() {
+        return salesDay;
+    }
+    /**
     /**
      * This method returns the value of the database column stock.StoreNum
      *
@@ -33,7 +60,6 @@ public class Stock extends StockKey implements Serializable {
     public Integer getStoreNum() {
         return storeNum;
     }
-
     /**
      *
      * @mbg.generated Wed Jun 27 15:47:12 CST 2018
@@ -42,7 +68,6 @@ public class Stock extends StockKey implements Serializable {
         this.setStoreNum(storeNum);
         return this;
     }
-
     /**
      * This method sets the value of the database column stock.StoreNum
      *
@@ -53,7 +78,6 @@ public class Stock extends StockKey implements Serializable {
     public void setStoreNum(Integer storeNum) {
         this.storeNum = storeNum;
     }
-
     /**
      *
      * @mbg.generated Wed Jun 27 15:47:12 CST 2018
@@ -64,43 +88,14 @@ public class Stock extends StockKey implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
+        sb.append(", proId=").append(proId);
+        sb.append(", proDate=").append(proDate);
         sb.append(", storeNum=").append(storeNum);
+        sb.append(", salesDay=").append( salesDay);
+        sb.append(", restday=").append( restday);
+        sb.append(", proName=").append( proName);
         sb.append("]");
         return sb.toString();
     }
 
-    /**
-     *
-     * @mbg.generated Wed Jun 27 15:47:12 CST 2018
-     */
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        Stock other = (Stock) that;
-        return (this.getProId() == null ? other.getProId() == null : this.getProId().equals(other.getProId()))
-            && (this.getProDate() == null ? other.getProDate() == null : this.getProDate().equals(other.getProDate()))
-            && (this.getStoreNum() == null ? other.getStoreNum() == null : this.getStoreNum().equals(other.getStoreNum()));
-    }
-
-    /**
-     *
-     * @mbg.generated Wed Jun 27 15:47:12 CST 2018
-     */
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getProId() == null) ? 0 : getProId().hashCode());
-        result = prime * result + ((getProDate() == null) ? 0 : getProDate().hashCode());
-        result = prime * result + ((getStoreNum() == null) ? 0 : getStoreNum().hashCode());
-        return result;
-    }
 }

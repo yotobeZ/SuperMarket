@@ -55,13 +55,19 @@ public class LoginController {
                 }
                 case 2:{
                     url=  "list/putin";
-                    log.info("库管");
+                    log.info("库管员");
                     break;
                 }
                 case 3:{
                     url="redirect:/Testjump";
                     //url=  "list/infolist";
                     log.info("信息员");
+                    break;
+                }
+                case 4:{
+                    url="redirect:/prom";
+                    //url=  "list/infolist";
+                    log.info("理货员");
                     break;
                 }
                 default:

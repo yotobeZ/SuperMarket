@@ -74,4 +74,6 @@ public interface StockMapper {
      * @mbg.generated Wed Jun 27 15:47:12 CST 2018
      */
     int updateByPrimaryKey(Stock record);
+
+   List <Stock> findpromCata(String proCatagory);
 }

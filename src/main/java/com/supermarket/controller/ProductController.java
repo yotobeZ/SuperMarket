@@ -23,6 +23,7 @@ public class ProductController {
     @RequestMapping(value = "/Sell",method = RequestMethod.GET)
     public String presell(Model model, HttpSession httpSession){
         model.addAttribute("prolist",showall());
+        System.out.println(showall());
         return "list/cashier";
     }
     @RequestMapping(value = "/proselect",method = RequestMethod.POST)
@@ -47,7 +48,7 @@ public class ProductController {
 
     @RequestMapping("/Testjump")
     public String Testjump(){
-        return "list/Test";
+        return "list/in";
     }
 
 
