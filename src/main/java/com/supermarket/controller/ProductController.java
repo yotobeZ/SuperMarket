@@ -4,26 +4,31 @@ package com.supermarket.controller;
 import com.supermarket.pojo.Product;
 import com.supermarket.pojo.ProductExample;
 import com.supermarket.service.ProductMapperService;
+import com.supermarket.service.SalerecordMapperService;
 import lombok.extern.java.Log;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
 import java.util.List;
 @Log
 @Controller
 public class ProductController {
     @Autowired
     ProductMapperService productMapperService;
+    @Autowired
+    SalerecordMapperService salerecordMapperService;
     @RequestMapping(value = "/Sell",method = RequestMethod.GET)
     public String presell(Model model, HttpSession httpSession){
         model.addAttribute("prolist",showall());
-        System.out.println(showall());
         return "list/cashier";
     }
     @RequestMapping(value = "/proselect",method = RequestMethod.POST)
@@ -35,9 +40,20 @@ public class ProductController {
 
 
     @RequestMapping(value = "/Sell",method = RequestMethod.POST)
-    public String sell(){
+    public String sell(Model model,@Param("payway")int payway, @Param("proId")int[] proId, @Param("proNum")int[] proNum, @Param("proDate")Date[] proDate){
+        int i =proId.length;
+        log.info(""+i);
+        int j =salerecordMapperService.insertByIdNumDatePayway(proId,proNum,proDate,payway);
+        log.info("i:"+i+","+"j:"+j);
+        String url="";
+        if (i!=j){
+            model.addAttribute("info","结算失败请查看日志");
 
-        return "";
+        }else {
+            model.addAttribute("info","成功生成"+i+"条销售记录");
+            url="redirect:/Sell";
+        }
+        return url;
     }
     @RequestMapping("/Test")
     @ResponseBody

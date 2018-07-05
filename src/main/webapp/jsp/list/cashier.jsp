@@ -5,6 +5,9 @@
 <head>
     <title>收银</title>
 </head>
+<style>
+
+</style>
 <script src="/resources/js/jquery-1.12.4.js"></script>
 <script src="/resources/js/check.js"></script>
 <%--<style type="text/css" href="resources/css/sellselect.css"/>--%>
@@ -12,7 +15,7 @@
 <body>
 <div>
     <table id="selectdiv">
-        <tr><th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <tr><th></th>
             <th>名称</th>
             <th>规格</th>
             <th>生产日期</th>
@@ -21,40 +24,37 @@
             <th>总价</th>
         </tr>
         <tr id="selectedtr">
+            <td><input id =ProId value="" hidden></td>
             <td>
-                <input type="text" value="" id="select" list="prolist"/>
+
+                <input type="text" value=""  list="prolist" id="selectinput"/>
                 <datalist  id="prolist" class="selectList">
                     <c:forEach var="pro" items="${prolist}">
                         <option id="${pro.proId}">${pro.proName}</option >
                     </c:forEach>
                 </datalist>
             </td>
-            <td><input id="ProSize" readonly/></td>
-            <td><input id="ProDate" readonly/></td>
-            <td><input id="ProPrice" readonly/></td>
-            <td><input type="text"  class="num"/></td>
-            <td><input  type="text" class="sumprice" readonly/></td>
+
+            <td><input id="ProSize" value="" readonly/></td>
+            <td><input id="ProDate" value="" readonly/></td>
+            <td><input id="ProPrice" value="" readonly/>元</td>
+            <td><input type="text"  id="num" value=""/></td>
+            <td><input type="text" id="sumprice" value="" readonly/></td>
         </tr>
     </table>
-    <form action="/Sell" method="post">
-        <table id="detail">
+    <h1>购物车</h1>
+    <form id="detail">
 
-            </tr>
-            <tr>
-                <td><p id="id">1</p></td>
-                <td><input type="text" value="" class="name" /></td>
-                <td><input readonly/></td>
-                <td><input readonly/></td>
-                <td><input readonly/></td>
-                <td><input type="text" class="num" /></td>
-                <td><input type="text" class="sumprice" readonly/></td>
-            </tr>
-            <tr >
-                <td  colspan="5">共计</td>
-                <td colspan="2" ><input type="text" id="total" readonly></td>
-            </tr>
-        </table>
-        <input type="submit" value="结算">
+        <H3 >共计</H3>
+        <input type="text" id="total" readonly>
+        <select name="payway" required>支付方式
+            <option >请选择</option>
+            <option value="0">微信</option>
+            <option value="1">支付宝</option>
+            <option value="2">校园卡</option>
+        </select>
+        <input type="submit" value="结算"><br>
+        <input type="button" value="Ajax提交" id="ajaxsub">
     </form>
 </div>
 </body>

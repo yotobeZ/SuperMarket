@@ -316,7 +316,7 @@
     where ProId = #{proId,jdbcType=INTEGER}
   </update>
     <select id="selectByName" resultMap="selectList"  parameterType="string">
-        select pro.ProName,pro.ProSize,s.ProDate as ProDate,pro.ProPrice
+        select pro.ProId,pro.ProName,pro.ProSize,s.ProDate as ProDate,pro.ProPrice
         from product pro
         LEFT OUTER JOIN stock s on s.ProId=pro.ProId
         where pro.proname=#{proName}

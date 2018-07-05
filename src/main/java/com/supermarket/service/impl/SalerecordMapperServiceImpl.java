@@ -4,12 +4,14 @@ import com.supermarket.dao.SalerecordMapper;
 import com.supermarket.pojo.Salerecord;
 import com.supermarket.pojo.SalerecordExample;
 import com.supermarket.service.SalerecordMapperService;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-@Service
+@Log
+@Service("SalerecordMapperService")
 public class SalerecordMapperServiceImpl implements SalerecordMapperService {
     @Autowired
     SalerecordMapper salerecordMapper;
@@ -19,6 +21,21 @@ public class SalerecordMapperServiceImpl implements SalerecordMapperService {
         return salerecordMapper.selectByExample(example);
     }
 
+    @Override
+    public int insertByIdNumDatePayway(int[] id, int[] num, java.sql.Date[] date, int payway) {
+        int i=0;
+        for (int j = 0; j <id.length; j++) {
+            Salerecord salerecord=new Salerecord();
+            salerecord.setModeOfPay(payway);
+            salerecord.setSaleDate(new Date());
+            salerecord.setProId(id[j]);
+            salerecord.setSaleNum(num[j]);
+            salerecord.setProDate(date[j]);
+            i +=salerecordMapper.insertSelective(salerecord);
+            log.info(salerecord.toString());
+        }
+        return i;
+    }
 
 //    @Override
 //    public List<Salerecord> selectBySaleDate(java.sql.Date date) {
