@@ -223,4 +223,15 @@
       RemDate = #{remDate,jdbcType=DATE}
     where ProId = #{proId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectInfo" resultMap="selectList"  parameterType="string">
+        select rem.ProId,rem.InNum,rem.RemDate,p.ProName as ProName
+        from remindin rem
+        LEFT OUTER JOIN product p on p.ProId=sto.ProId
+    </select>
+  <resultMap id="selectList" type="com.supermarket.pojo.Stock">
+
+    <result column="ProName" jdbcType="CHAR" property="proName"/>
+  </resultMap>
+
 </mapper>

@@ -12,6 +12,17 @@
     <title>进货提醒</title>
 </head>
 <body>
+<table>
+    <tr><th>商品名称</th><th>进货数量</th><th>提醒日期</th></tr>
+    <c:forEach items="${remindinsList}" var="remindins" varStatus="i">
+    <tr><td>${remindins.ProName}</td>
+        <td>${remindins.InNum}</td>
+        <td>${remindins.RemDate}</td>
+        <td>
+        </td>
 
+        </c:forEach>
+</table>
 </body>
 </html>
+

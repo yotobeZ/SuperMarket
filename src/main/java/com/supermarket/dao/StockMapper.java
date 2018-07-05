@@ -44,6 +44,7 @@ public interface StockMapper {
      * @mbg.generated Wed Jun 27 15:47:12 CST 2018
      */
     List<Stock> selectByExample(StockExample example);
+    List<Stock> selectInfo();
 
     /**
      *

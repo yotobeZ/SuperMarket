@@ -1,5 +1,9 @@
 package com.supermarket.service;
 
+import com.supermarket.pojo.Stock;
+
+import java.util.List;
+
 /**
  * @ClassName com.supermarket.service
  * @Description
@@ -8,4 +12,5 @@ package com.supermarket.service;
  */
 
 public interface StockMapperService {
+    List<Stock> selectInfo();
 }

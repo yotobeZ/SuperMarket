@@ -1,7 +1,12 @@
 package com.supermarket.service.impl;
 
+import com.supermarket.dao.StockMapper;
+import com.supermarket.pojo.Stock;
 import com.supermarket.service.StockMapperService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @ClassName com.supermarket.service.impl
@@ -11,4 +16,11 @@ import org.springframework.stereotype.Service;
  */
 @Service("StockMapperService")
 public class StockMapperServiceImpl implements StockMapperService {
+    @Autowired
+    StockMapper stockMapper;
+
+    @Override
+    public List<Stock> selectInfo() {
+        return stockMapper.selectInfo();
+    }
 }
