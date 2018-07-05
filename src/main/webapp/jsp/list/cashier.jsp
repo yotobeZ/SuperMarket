@@ -6,7 +6,9 @@
     <title>收银</title>
 </head>
 <style>
-
+*{
+    margin:auto;
+}
 </style>
 <script src="/resources/js/jquery-1.12.4.js"></script>
 <script src="/resources/js/check.js"></script>
@@ -45,16 +47,16 @@
     <h1>购物车</h1>
     <form id="detail">
 
-        <H3 >共计</H3>
-        <input type="text" id="total" readonly>
+
         <select name="payway" required>支付方式
             <option >请选择</option>
             <option value="0">微信</option>
             <option value="1">支付宝</option>
             <option value="2">校园卡</option>
         </select>
-        <input type="submit" value="结算"><br>
-        <input type="button" value="Ajax提交" id="ajaxsub">
+        <H3 >共计</H3>
+        <input style="font-size:20px;font-weight: bold;text-align: center" type="text" id="total" readonly>
+        <input type="button" value="Ajax提交" id="ajaxsub"><br>
     </form>
 </div>
 </body>

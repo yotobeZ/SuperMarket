@@ -69,8 +69,8 @@ $(function () {
             type:"post",
             dataType:"json",
             data:$("#detail").serialize(),
-            success:function (data) {
-                alert("成功")
+            success:function() {
+                window.location.href="/Sell";
             },
             error:function(data){
 

@@ -48,9 +48,11 @@ public class ProductController {
         String url="";
         if (i!=j){
             model.addAttribute("info","结算失败请查看日志");
+            log.info("失败j:"+j);
         }else {
             model.addAttribute("info","成功生成"+i+"条销售记录");
-            url="redirect:/Sell";
+            log.info("成功");
+            return"redirect:/Sell";
         }
         return url;
     }
