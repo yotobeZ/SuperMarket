@@ -74,7 +74,7 @@ $(function () {
                 alert("成功")
             },
             error:function(info){
-                alert(info);
+                alert(info.info);
             }
         })
     })

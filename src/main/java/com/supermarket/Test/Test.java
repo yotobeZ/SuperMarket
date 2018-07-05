@@ -1,12 +1,16 @@
 package com.supermarket.Test;
 
+import com.supermarket.dao.SalerecordMapper;
+import com.supermarket.pojo.Salerecord;
 import com.supermarket.pojo.Userlog;
+import com.supermarket.service.SalerecordMapperService;
 import com.supermarket.service.UserlogMapperService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -21,10 +25,13 @@ import java.util.List;
 public class Test {
     @Autowired
     UserlogMapperService userlogMapperService;
-
+    @Autowired
+    SalerecordMapperService salerecordMapperService;
+    @Autowired
+    SalerecordMapper salerecordMapper;
     @org.junit.Test
     public void TestLogin(){
-        Userlog userlog=new Userlog();
+     /*   Userlog userlog=new Userlog();
         userlog.setLogName("sy");
         userlog.setLogPassword("000");
         List<Userlog> userlogList =userlogMapperService.selectByExample(userlog);
@@ -34,7 +41,23 @@ public class Test {
              ) {
             System.out.println(1);
             System.out.println(test.toString());
-        }
+        }*/
+        int[]id={3,5};
+        int[]num={1,2};
+        int payway=2;
+        Date[] pdate={new Date(2018-03-02),new Date(2018-05-11)};
+        System.out.println(id.length);
+        Salerecord salerecord1=new Salerecord();
+        salerecord1.setProDate(new Date(2018-03-02));
+        salerecord1.setSaleNum(1);
+        salerecord1.setProId(3);
+        salerecord1.setModeOfPay(payway);
+        salerecord1.setSaleDate(new java.util.Date());
+
+        int j = salerecordMapper.insertSelective(salerecord1);
+        //int i=salerecordMapperService.insertByIdNumDatePayway(id,num,pdate,payway);
+        //System.out.println(i);
+        System.out.println("j:"+j);
 
 
     }
