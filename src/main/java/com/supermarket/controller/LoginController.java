@@ -1,6 +1,11 @@
 package com.supermarket.controller;
 
+import com.supermarket.pojo.Sales;
+import com.supermarket.pojo.SalesExample;
+import com.supermarket.pojo.Stock;
 import com.supermarket.pojo.Userlog;
+import com.supermarket.service.SalesMapperService;
+import com.supermarket.service.StockMapperService;
 import com.supermarket.service.UserlogMapperService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -12,12 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 
 @Controller
 public class LoginController {
-
     private Log log = LogFactory.getLog(this.getClass());
 
     @Autowired
@@ -70,13 +76,13 @@ public class LoginController {
                     break;
                 }
                 case 3:{
-                    url="redirect:/Testjump";
+                    url="redirect:/Testjum";
                     //url=  "list/infolist";
                     log.info("信息员");
                     break;
                 }
                 case 4:{
-                    url="redirect:/prom";
+                    url="list/prominfo";
                     //url=  "list/infolist";
                     log.info("理货员");
                     break;

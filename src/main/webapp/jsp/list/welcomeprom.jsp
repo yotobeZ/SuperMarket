@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2018-07-05
-  Time: 8:28
+  User: MYX
+  Date: 2018-07-07
+  Time: 10:58
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -18,7 +18,7 @@
 
 <div class="font">
     <div class="sz">
-    <h2>欢迎登录库存管理系统!</h2>
+        <h2>欢迎登录促销管理系统!</h2>
     </div>
 </div>
 </body>

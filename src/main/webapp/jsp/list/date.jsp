@@ -21,51 +21,10 @@
 
 <html>
 <head>
-    <%--&lt;%&ndash;<script src="${ctx }/resources/js/jquery-1.12.4.js"></script>&ndash;%&gt;--%>
-    <%--&lt;%&ndash;<script src="${ctx }/resources/js/echarts.js"></script>&ndash;%&gt;--%>
-    <%--&lt;%&ndash;<script src="${ctx }/resources/js/cfgopts.js"></script>&ndash;%&gt;--%>
-        <%--<script src="/resources/js/jquery-1.12.4.js"></script>--%>
-        <%--<script src="/resources/js/echarts.js"></script>--%>
+
 
 </head>
 <body>
-<%--<style>--%>
-    <%--html, body, #main {--%>
-        <%--width: 100%;--%>
-        <%--height: 100%;--%>
-        <%--margin: 0;--%>
-        <%--background-color: #d4e1fa;--%>
-    <%--}--%>
-<%--</style>--%>
-<%--<div id="bar" style="width: 600px;height: 400px;"></div>--%>
-    <%--<script type="text/javascript">--%>
-    <%--var myChart = echarts.init(document.getElementById('bar'));--%>
-    <%--var option = {--%>
-        <%--title: {--%>
-            <%--text: '日营业额'--%>
-        <%--},--%>
-        <%--tooltip: {},--%>
-        <%--legend: {--%>
-            <%--data:['营业额']--%>
-        <%--},--%>
-        <%--xAxis: {--%>
-            <%--data: ["校园卡","现金","支付宝","微信","银行卡"]--%>
-        <%--},--%>
-        <%--yAxis: [--%>
-    <%--{--%>
-        <%--type : 'value',--%>
-            <%--name : '营业额',--%>
-        <%--axisLabel : {--%>
-        <%--formatter: '{value} 元'	//控制输出格式--%>
-    <%--}--%>
-        <%--},--%>
-        <%--series: [{--%>
-            <%--name: '销量',--%>
-            <%--type: 'bar',--%>
-            <%--data: []--%>
-        <%--}];--%>
-    <%--myChart.setOption(option);--%>
-<%--</script>--%>
 <table border="1" align="center">
     <tr>
         <td>销售单号</td>
@@ -76,7 +35,7 @@
     String driverClass="com.mysql.jdbc.Driver";
     String url="jdbc:mysql://localhost:3306/supermarket";
     String user="root";
-    String password="root";
+    String password="admin";
     Connection conn;
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
     java.util.Date currentTime = new java.util.Date();//得到当前系统时间

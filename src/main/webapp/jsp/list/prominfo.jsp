@@ -1,17 +1,18 @@
+
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2018-07-04
-  Time: 9:46
+  User: MYX
+  Date: 2018-07-03
+  Time: 18:14
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>财务</title>
+    <title>库存</title>
     <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
 
@@ -84,28 +85,12 @@
         }
 
     </style>
-    <script type="text/javascript">
-
-        function date()
-        {
-            window.parent.document.getElementById("week").style.display="none";
-            ss=document.getElementById("date");
-            ss.style.visibility="visible";
-        }
-        function week()
-        {
-            window.parent.document.getElementById("date").style.display="none";
-            ww=document.getElementById("week");
-            ww.style.visibility="visible";
-
-        }
-    </script>
 </head>
 <body class="eye-protector-processed" style="background-color: rgb(193, 230, 198); transition: background-color 0.3s ease;">
 <div class="navbar navbar-duomi navbar-static-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" id="logo">合肥工业大学教育超市财务管理系统
+            <a class="navbar-brand" id="logo">合肥工业大学教育超市促销管理系统
             </a>
         </div>
     </div>
@@ -123,31 +108,38 @@
                 <li>
                     <a href="#stockManage" class="nav-header collapsed" data-toggle="collapse">
                         <i class="glyphicon glyphicon-cog"></i>
-                        销售额信息
+                        促销管理
                         <span class="pull-right glyphicon glyphicon-chevron-down"></span>
                     </a>
                     <ul id="stockManage" class="nav nav-list collapse secondmenu" style="height: 0px;">
-                        <li><a href="jsp/list/date.jsp"  target="iframe_a"><i class="glyphicon glyphicon-user"></i>日销售额</a></li>
+                        <li><a href="/prom"  target="iframe_a"><i class="glyphicon glyphicon-user"></i>促销信息提醒</a></li>
 
-                        <li><a  href="jsp/list/week.jsp" target="iframe_a"><i class="glyphicon glyphicon-edit"></i>月销售额</a></li>
+                        <li><a  href="/promsearch" target="iframe_a"><i class="glyphicon glyphicon-edit"></i>查询促销记录表</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#stockInManage" class="nav-header collapsed" data-toggle="collapse">
                         <i class="glyphicon glyphicon-cog"></i>
-                        利润信息
+                        管理
                         <span class="pull-right glyphicon glyphicon-chevron-down"></span>
                     </a>
                     <ul id="stockInManage" class="nav nav-list collapse secondmenu" style="height: 0px;">
-                        <li><a><i class="glyphicon glyphicon-user"></i>日利润</a></li>
+                        <li><a href="/showRemind"  target="iframe_a"><i class="glyphicon glyphicon-user"></i>进货提醒</a></li>
 
-                        <li><a href="jsp/list/weekin.jsp" target="iframe_a"><i class="glyphicon glyphicon-edit"></i>周利润</a></li>
+                        <li><a ><i class="glyphicon glyphicon-edit"></i>进货记录</a></li>
                     </ul>
                 </li>
 
-
+                <li>
+                    <a >
+                        <i class="glyphicon glyphicon-globe"></i>
+                        入库管理
+                        <span class="label label-warning pull-right">5</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <iframe src="/jsp/list/welcome1.jsp" name="iframe_a"  width="600" height="400">
+        <iframe src="/jsp/list/welcomeprom.jsp" name="iframe_a"  width="1000" height="600">
             <div>showarea</div>
         </iframe>
     </div>
@@ -156,6 +148,4 @@
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script>
 </script>
-
 </body>
-</html>

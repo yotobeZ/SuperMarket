@@ -16,4 +16,10 @@ import java.util.List;
 public interface ProductMapperService {
     List<Product> selectByExample(ProductExample example);
     Product selectByName(String proName);
+    Product selectByPrimaryKey(Integer proId);
+    String updateByPrimaryKey(Product record);
+    String deleteByPrimaryKey(Integer proId);
+    String insert(Product record);
+    List<Product> selectAll();
+
 }

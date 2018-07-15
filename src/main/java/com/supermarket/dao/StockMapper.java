@@ -1,9 +1,7 @@
 package com.supermarket.dao;
 
-import com.supermarket.pojo.Page;
-import com.supermarket.pojo.Stock;
-import com.supermarket.pojo.StockExample;
-import com.supermarket.pojo.StockKey;
+import com.supermarket.pojo.*;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -48,6 +46,7 @@ public interface StockMapper {
     List<Stock> selectInfo();
     List<Stock> selectInfo(Page page);
 
+    int insert(Sales record);
     /**
      *
      * @mbg.generated Wed Jun 27 15:47:12 CST 2018

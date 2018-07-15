@@ -75,4 +75,12 @@ public interface ProductMapper {
     int updateByPrimaryKey(Product record);
 
     Product selectByName (@Param("proName")String proName);
+
+    /**
+     列出所有商品
+     */
+    List<Product> selectAll();
+
+
+
 }

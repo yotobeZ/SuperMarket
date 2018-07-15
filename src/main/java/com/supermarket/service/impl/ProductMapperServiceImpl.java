@@ -31,4 +31,40 @@ public class ProductMapperServiceImpl implements ProductMapperService {
     public Product selectByName(String proName) {
         return productMapper.selectByName(proName);
     }
+
+
+
+    //商品信息增删改查
+    @Override
+    public Product selectByPrimaryKey(Integer proId) {
+        return productMapper.selectByPrimaryKey(proId);
+    }
+
+    @Override
+    public String updateByPrimaryKey(Product record) {
+        productMapper.updateByPrimaryKey(record);
+        return "";
+    }
+
+
+    @Override
+    public String deleteByPrimaryKey(Integer proId) {
+        productMapper.deleteByPrimaryKey(proId);
+        return "";
+    }
+
+    @Override
+    public String insert(Product record) {
+        productMapper.insert(record);
+        return "";
+    }
+
+
+    @Override
+    public List<Product> selectAll() {
+        return productMapper.selectAll();
+    }
+
+
+
 }

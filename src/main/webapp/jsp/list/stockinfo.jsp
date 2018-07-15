@@ -10,25 +10,30 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
 <%--读stock和product表--%>
 <html>
-<head>
-    <title>库存信息</title>
-    <style>
-        table,tr,td,th{
+    <head>
+        <title>库存信息</title>
+        <style>
+            table,tr,td,th{
             border: 1px solid black;
-        }
-    </style>
-</head>
-<body>
-<table align="center">
-    <tr><th>商品名称</th><th>生产日期</th><th>库存数量</th></tr>
-    <c:forEach items="${stocksList}" var="stocks" varStatus="i">
-        <tr><td>${stocks.proName}</td>
-            <td><fmt:formatDate type="date"
-                                value="${stocks.proDate}"/></td>
-            <td>${stocks.storeNum}</td></tr>
+            }
+        </style>
+    </head>
+    <body>
+        <table align="center">
+            <tr><th>商品名称</th><th>进货数量</th></tr>
+            <c:forEach items="${stocksList}" var="stocks" varStatus="i">
+                <tr><td>${stocks.proName}</td>
+                    <%--<td><fmt:formatDate type="date"
+                                        value="${stocks.proDate}"/></td>
+                    <td>${stocks.storeNum}</td>--%></tr>
 
-    </c:forEach>
-</table>
-
-</body>
+            </c:forEach>
+        </table>
+        <div style="text-align:center">
+            <a href="?start=0">首  页</a>
+            <a href="?start=${page.start-page.count}">上一页</a>
+            <a href="?start=${page.start+page.count}">下一页</a>
+            <a href="?start=${page.last}">末  页</a>
+        </div>
+    </body>
 </html>

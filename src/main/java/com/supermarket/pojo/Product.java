@@ -76,15 +76,16 @@ public class Product implements Serializable {
      */
     private Integer safeStock;
 
-    public Date getProDate() {
+
+    public java.util.Date getProDate() {
         return proDate;
     }
 
-    public void setProDate(Date proDate) {
+    public void setProDate(java.util.Date proDate) {
         this.proDate = proDate;
     }
 
-    private Date proDate;
+    private java.util.Date proDate;
 
     /**
      *

@@ -7,7 +7,7 @@
 --%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"   isELIgnored="false" %>
 <html>
 <head>
@@ -60,12 +60,14 @@
 </table>
 
 <div id="light" class="white_content">
+    <form action="/addsq" method="post" >
+        <table id="sq">
+            <tr><td>商品编号：</td><td><input   type="text " id="proId" /></td></tr>
 
-    <sp:form action="/addcx" method="post" modelAttribute="Promote" >
-        商品编号:<sp:input path="logName" type="text" name="username" id="username"/><br>
-        商品名称:<sp:input path="logPassword" type="text" name="password" id="password"/><br>
-       商品生产日期 :<sp:input path="logPassword" type="text" name="password" id="password"/><br>
-        促销方式 :<sp:input path="logPassword" type="text" name="password" id="password"/><br>
+            <tr><td>促销时间：</td><td><input   type="text "  id="saleDate" /></td></tr>
+            <tr><td>生产日期：</td><td><input    type="text " id="proDate" /></td></tr>
+            <tr><td>促销方式：</td><td><input    type="text "  id="promotion" /></td></tr></table>
+        <input type="submit"  value="添加促销记录" onclick="pm()"/>
     </form>
 
     <a href = "javascript:void(0)" onclick = "closeDialog()" >点这里下载文件</a>
@@ -89,6 +91,16 @@
         document.getElementById('light').style.display='none';
         document.getElementById('fade').style.display='none'
     }
+   function pm(){
+       var cx=document.getElementById("sq");    //获取table对像
+       var rows=cx.rows;
+       for(var i=0;i<rows.length;i++){    //--循环所有的行
+           var cells=rows[i].cells;
+           for(var j=1;j<cells.length;j++){   //--循环所有的列
+               alert(cells[j].innerHTML);
+           }
+       }
+  }
 </script>
 </body>
 </html>

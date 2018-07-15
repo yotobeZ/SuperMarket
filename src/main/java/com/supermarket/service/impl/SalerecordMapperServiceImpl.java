@@ -1,16 +1,23 @@
 package com.supermarket.service.impl;
 
+import com.supermarket.Test.SnowflakeIdWorker;
 import com.supermarket.dao.SalerecordMapper;
+import com.supermarket.pojo.Product;
 import com.supermarket.pojo.Salerecord;
 import com.supermarket.pojo.SalerecordExample;
+import com.supermarket.service.ProductMapperService;
 import com.supermarket.service.SalerecordMapperService;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-@Service
+@Log
+@Service("SalerecordMapperService")
 public class SalerecordMapperServiceImpl implements SalerecordMapperService {
+/*
     @Autowired
     SalerecordMapper salerecordMapper;
 
@@ -19,7 +26,54 @@ public class SalerecordMapperServiceImpl implements SalerecordMapperService {
         return salerecordMapper.selectByExample(example);
     }
 
+    @Override
+    public int insertByIdNumDatePayway(int[] id, int[] num, String[] name, int payway) {
+        return 0;
+    }
+*/
 
+    @Autowired
+    SalerecordMapper salerecordMapper;
+    @Autowired
+    ProductMapperService productMapperService;
+
+    @Override
+    public List<Salerecord> selectByExample(SalerecordExample example) {
+        return salerecordMapper.selectByExample(example);
+    }
+
+    @Override
+    public int insertByIdNumDatePayway(int[] id, int[] num, String[] name, int payway) {
+        int i=0;
+        SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
+        Product product;
+        for (int j = 0; j <id.length; j++) {
+            Salerecord salerecord=new Salerecord();
+            product=productMapperService.selectByName(name[j]);
+            salerecord.setModeOfPay(payway);
+            salerecord.setSaleDate(new Date());
+            salerecord.setProId(id[j]);
+            salerecord.setSaleNum(num[j]);
+            salerecord.setProDate(product.getProDate());
+            salerecord.setSaleNo(idWorker.getId());
+            i +=salerecordMapper.insertSelective(salerecord);
+            log.info(salerecord.toString());
+        }
+        return i;
+    }
+
+
+    public int getId() {
+        String id = "";
+        //获取当前时间戳
+        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String temp = sf.format(new java.util.Date());
+        //获取6位随机数
+        int random = (int) ((Math.random() + 1) * 100000);
+        id = temp + random;
+        int i=Integer.valueOf(id);
+        return i;
+    }
 //    @Override
 //    public List<Salerecord> selectBySaleDate(java.sql.Date date) {
 //        return salerecordMapper.selectBySaleDate(date);

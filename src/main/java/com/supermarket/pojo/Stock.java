@@ -19,6 +19,8 @@ public class Stock extends StockKey implements Serializable {
      */
     private Integer storeNum;
     private String proName;
+    private  Integer  salesDay;
+
 
     /**
      *
@@ -26,7 +28,7 @@ public class Stock extends StockKey implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-    private  Integer  salesDay;
+
 
     public String getProName() {
         return proName;
