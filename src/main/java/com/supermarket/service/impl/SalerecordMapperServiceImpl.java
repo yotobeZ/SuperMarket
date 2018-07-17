@@ -1,41 +1,18 @@
 package com.supermarket.service.impl;
 
-import com.supermarket.Test.SnowflakeIdWorker;
 import com.supermarket.dao.SalerecordMapper;
-import com.supermarket.pojo.Product;
 import com.supermarket.pojo.Salerecord;
 import com.supermarket.pojo.SalerecordExample;
-import com.supermarket.service.ProductMapperService;
 import com.supermarket.service.SalerecordMapperService;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-@Log
-@Service("SalerecordMapperService")
+@Service
 public class SalerecordMapperServiceImpl implements SalerecordMapperService {
-/*
     @Autowired
     SalerecordMapper salerecordMapper;
-
-    @Override
-    public List<Salerecord> selectByExample(SalerecordExample example) {
-        return salerecordMapper.selectByExample(example);
-    }
-
-    @Override
-    public int insertByIdNumDatePayway(int[] id, int[] num, String[] name, int payway) {
-        return 0;
-    }
-*/
-
-    @Autowired
-    SalerecordMapper salerecordMapper;
-    @Autowired
-    ProductMapperService productMapperService;
 
     @Override
     public List<Salerecord> selectByExample(SalerecordExample example) {
@@ -63,7 +40,7 @@ public class SalerecordMapperServiceImpl implements SalerecordMapperService {
     }
 
 
-    public int getId() {
+        public int getId() {
         String id = "";
         //获取当前时间戳
         SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -74,6 +51,7 @@ public class SalerecordMapperServiceImpl implements SalerecordMapperService {
         int i=Integer.valueOf(id);
         return i;
     }
+
 //    @Override
 //    public List<Salerecord> selectBySaleDate(java.sql.Date date) {
 //        return salerecordMapper.selectBySaleDate(date);

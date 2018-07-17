@@ -315,28 +315,12 @@
       SafeStock = #{safeStock,jdbcType=INTEGER}
     where ProId = #{proId,jdbcType=INTEGER}
   </update>
-<!--    <select id="selectByName" resultMap="selectList"  parameterType="string">
-        select pro.ProName,pro.ProSize,s.ProDate as ProDate,pro.ProPrice
-        from product pro
-        LEFT OUTER JOIN stock s on s.ProId=pro.ProId
-        where pro.proname=#{proName}
-    </select>-->
-  <select id="selectByName" resultMap="selectList"  parameterType="string">
+    <select id="selectByName" resultMap="selectList"  parameterType="string">
         select pro.ProId,pro.ProName,pro.ProSize,s.ProDate as ProDate,pro.ProPrice
         from product pro
         LEFT OUTER JOIN stock s on s.ProId=pro.ProId
         where pro.proname=#{proName}
     </select>
-<!--  <resultMap id="selectList" type="com.supermarket.pojo.Product">
-    <result column="ProDate" jdbcType="DATE" property="proDate"/>
-  </resultMap>-->
-  <!-- 选出所有商品-->
-  <select id="selectAll"  resultMap="BaseResultMap" >
-    select
-    <include refid="Base_Column_List" />
-    from product
-  </select>
-
     <resultMap id="selectList" type="com.supermarket.pojo.Product">
       <result column="ProDate" jdbcType="DATE" property="proDate"/>
     </resultMap>
