@@ -1,19 +1,26 @@
 package com.supermarket.service.impl;
 
+import com.supermarket.Test.SnowflakeIdWorker;
 import com.supermarket.dao.SalerecordMapper;
+import com.supermarket.pojo.Product;
 import com.supermarket.pojo.Salerecord;
 import com.supermarket.pojo.SalerecordExample;
+import com.supermarket.service.ProductMapperService;
 import com.supermarket.service.SalerecordMapperService;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+@Log
 @Service
 public class SalerecordMapperServiceImpl implements SalerecordMapperService {
     @Autowired
     SalerecordMapper salerecordMapper;
-
+    @Autowired
+    ProductMapperService productMapperService;
     @Override
     public List<Salerecord> selectByExample(SalerecordExample example) {
         return salerecordMapper.selectByExample(example);
