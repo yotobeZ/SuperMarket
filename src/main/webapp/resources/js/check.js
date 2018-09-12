@@ -1,5 +1,5 @@
 $(function () {
-
+/*
     $("#stuno").blur(function () {
         $.ajax({
             url:"/check",
@@ -10,7 +10,7 @@ $(function () {
                 $("#show_stuno_result").html(data.info);
             }
         })
-    });
+    });*/
     $("#selectinput").blur(function () {
         $.ajax({
             url:"/proselect",
@@ -69,11 +69,12 @@ $(function () {
             type:"post",
             dataType:"json",
             data:$("#detail").serialize(),
-            success:function() {
+            success:function(data) {
+                alert(data.info);
                 window.location.href="/Sell";
             },
             error:function(data){
-
+                alert('e：'+data);
             }
         })
     })

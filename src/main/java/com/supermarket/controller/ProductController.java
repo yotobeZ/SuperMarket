@@ -1,6 +1,7 @@
 package com.supermarket.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.supermarket.pojo.Product;
 import com.supermarket.pojo.ProductExample;
 import com.supermarket.service.ProductMapperService;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 @Log
 @Controller
@@ -40,21 +42,24 @@ public class ProductController {
 
 
     @RequestMapping(value = "/Sell",method = RequestMethod.POST)
-    public String sell(Model model,@Param("payway")int payway, @Param("proId")int[] proId, @Param("proNum")int[] proNum, @Param("proName")String[] proName){
+    @ResponseBody
+    public Object sell(Model model,@Param("payway")int payway, @Param("proId")int[] proId, @Param("proNum")int[] proNum, @Param("proName")String[] proName){
+        HashMap reback = new HashMap();
         int i =proId.length;
         log.info(""+i);
         int j =salerecordMapperService.insertByIdNumDatePayway(proId,proNum,proName,payway);
         log.info("i:"+i+","+"j:"+j);
         String url="";
         if (i!=j){
-            model.addAttribute("info","结算失败请查看日志");
+            //model.addAttribute("info","结算失败请查看日志");
+            reback.put("info","结算失败请查看日志");
             log.info("失败j:"+j);
         }else {
-            model.addAttribute("info","成功生成"+i+"条销售记录");
+            //model.addAttribute("info","成功生成"+i+"条销售记录");
+            reback.put("info","成功生成"+i+"条销售记录");
             log.info("成功");
-            return"redirect:/Sell";
         }
-        return url;
+        return JSON.toJSON(reback);
     }
     @RequestMapping("/Test")
     @ResponseBody
